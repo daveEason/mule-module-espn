@@ -19,7 +19,7 @@ import java.io.IOException;
 @Connector(name="espn", schemaVersion="1.0-SNAPSHOT")
 public abstract class espnConnector
 {
-    public static final String BASE_URI = "http://api.espn.com/v1/";
+    public static final String BASE_URI = "http://api.espn.com/v1";
     public static final String MLB_RESOURCE = "/sports/baseball/mlb";
 
 
@@ -30,6 +30,7 @@ public abstract class espnConnector
      * Configurable
      */
     @Configurable
+    @RestUriParam("apiKey")
     private String apiKey;
 
 
@@ -72,14 +73,13 @@ public abstract class espnConnector
      *
      * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-list-baseball-athletes}
      *
-     * @param apiKey - ESPN apiKey
      * @return String - JSON string representing MLB athletes
      * @throws IOException
      *
      */
     @Processor
-    @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes", method = HttpMethod.GET)
-    public abstract String getListBaseballAthletes(@RestQueryParam("apikey") String apiKey) throws IOException;
+    @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getListBaseballAthletes() throws IOException;
 
     /**
      * getBaseballAthlete
@@ -87,14 +87,13 @@ public abstract class espnConnector
      * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-baseball-athlete}
      *
      * @param playerId - ESPN player id
-     * @param apiKey - ESPN apiKey
      * @return String - JSON string representing a particular MLB athletes
      * @throws IOException
      *
      */
     @Processor
-    @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes/{id}", method = HttpMethod.GET)
-    public abstract String getBaseballAthlete(@RestUriParam("id") String playerId, @RestQueryParam("apikey") String apiKey) throws IOException;
+    @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes/{id}?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getBaseballAthlete(@RestUriParam("id") String playerId) throws IOException;
 
 
 }

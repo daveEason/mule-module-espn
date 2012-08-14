@@ -16,11 +16,11 @@
     <espn:config apiKey="${apiKey}"/>
 
     <flow name="getListBaseballAthletes">
-        <espn:get-list-baseball-athletes apiKey="${apiKey}"/>
+        <espn:get-list-baseball-athletes/>
     </flow>
 
     <flow name="getBaseballAthlete">
-        <espn:get-baseball-athlete apiKey="${apiKey}" playerId="#[message.payload[playerId]] "/>
+        <espn:get-baseball-athlete playerId="#[message.payload[playerId]]"/>
     </flow>
 
 </mule>

@@ -24,7 +24,7 @@ public class espnConnectorTest extends FunctionalTestCase
     @Test
     public void testGetListBaseballAthletes() throws Exception
     {
-        runFlowAndExpectJSON("getListBaseballAthletes","status","success");
+        runFlowAndExpectJSON("getListBaseballAthletes","success","status");
     }
 
     @Test
@@ -33,7 +33,7 @@ public class espnConnectorTest extends FunctionalTestCase
         Map msg = new HashMap();
         msg.put("playerId","31662");
 
-        runFlowWithPayloadAndExpectJSON("getBaseballAthlete", "status",  msg, "success");
+        runFlowWithPayloadAndExpectJSON("getBaseballAthlete", "success",  msg, "status");
     }
 
     /**
@@ -58,7 +58,7 @@ public class espnConnectorTest extends FunctionalTestCase
      * @param expect The expected output
      * @param keyName The JSON key identifier used for comparison
      */
-    protected <T> void runFlowAndExpectJSON(String flowName, T keyName, T expect) throws Exception
+    protected <T> void runFlowAndExpectJSON(String flowName, T expect, T keyName) throws Exception
     {
         Flow flow = lookupFlowConstruct(flowName);
         MuleEvent event = AbstractMuleTestCase.getTestEvent(null);
@@ -96,7 +96,7 @@ public class espnConnectorTest extends FunctionalTestCase
      * @param expect The expected output
      * @param payload The payload of the input event
      */
-    protected <T, U> void runFlowWithPayloadAndExpectJSON(String flowName, T keyName, U payload, T expect) throws Exception
+    protected <T, U> void runFlowWithPayloadAndExpectJSON(String flowName,  T expect, U payload, T keyName) throws Exception
     {
         Flow flow = lookupFlowConstruct(flowName);
         MuleEvent event = AbstractMuleTestCase.getTestEvent(payload);
