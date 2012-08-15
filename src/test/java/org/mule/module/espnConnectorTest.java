@@ -47,13 +47,13 @@ public class espnConnectorTest extends FunctionalTestCase
     }
 
     @Test
-    public void testGetBaseballAthleteBySeason() throws Exception
+    public void testGetBaseballAthleteByDates() throws Exception
     {
         Map msg = new HashMap();
         msg.put("playerId","31662");
-        msg.put("season","2012");
+        msg.put("dates","2012");
 
-        runFlowWithPayloadAndExpectJSON("getMLBaseballAthleteBySeason", "success",  msg, "status");
+        runFlowWithPayloadAndExpectJSON("getMLBaseballAthleteByDates", "success",  msg, "status");
     }
 
     @Test

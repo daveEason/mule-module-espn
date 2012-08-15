@@ -91,13 +91,21 @@ public abstract class espnConnector
      * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-m-l-baseball-athlete}
      *
      * @param playerId - ESPN player id
+     * @param dates - ESPN dates values (year) for requested data (i.e. 2011, 2012, etc...)
+     * @param enable - ESPN optional flag to enable specific info (comma separated string) valid values: stats/logos/notes/competitors
+     * @param seasonType - ESPN season type accepts pre/reg/post for preseason, regular and postseason respectively
+     * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON string representing a particular MLB athletes
      * @throws IOException
      *
      */
     @Processor
-    @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes/{playerId}/dates/{season}?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getMLBaseballAthlete(@RestUriParam("playerId") String playerId, @Optional @Default("") @RestUriParam("season") String season) throws IOException;
+    @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes/{playerId}/dates/{dates}?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getMLBaseballAthlete(@RestUriParam("playerId") String playerId,
+                                                @Optional @Default("") @RestUriParam("dates") String dates,
+                                                @Optional @Default("") @RestQueryParam("enable") String enable,
+                                                @Optional @Default("reg") @RestQueryParam("seasontype") String seasonType,
+                                                @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
 
 
     /**

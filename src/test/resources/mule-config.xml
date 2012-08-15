@@ -27,8 +27,8 @@
         <espn:get-m-l-baseball-athlete playerId="#[message.payload[playerId]]"/>
     </flow>
 
-    <flow name="getMLBaseballAthleteBySeason">
-        <espn:get-m-l-baseball-athlete playerId="#[message.payload[playerId]]" season="#[message.payload[season]]"/>
+    <flow name="getMLBaseballAthleteByDates">
+        <espn:get-m-l-baseball-athlete playerId="#[message.payload[playerId]]" dates="#[message.payload[dates]]"/>
     </flow>
 
     <flow name="getMLBaseballTeam">
