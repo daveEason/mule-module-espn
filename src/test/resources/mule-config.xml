@@ -15,12 +15,23 @@
 
     <espn:config apiKey="${apiKey}"/>
 
-    <flow name="getListBaseballAthletes">
-        <espn:get-list-baseball-athletes/>
+    <flow name="getListMLBaseballAthletes">
+        <espn:get-list-m-l-baseball-athletes/>
     </flow>
 
-    <flow name="getBaseballAthlete">
-        <espn:get-baseball-athlete playerId="#[message.payload[playerId]]"/>
+    <flow name="getListMLBaseballAthletesByGroup">
+        <espn:get-list-m-l-baseball-athletes group="#[message.payload[group]]"/>
     </flow>
 
+    <flow name="getMLBaseballAthlete">
+        <espn:get-m-l-baseball-athlete playerId="#[message.payload[playerId]]"/>
+    </flow>
+
+    <flow name="getMLBaseballAthleteBySeason">
+        <espn:get-m-l-baseball-athlete playerId="#[message.payload[playerId]]" season="#[message.payload[season]]"/>
+    </flow>
+
+    <flow name="getMLBaseballTeam">
+        <espn:get-m-l-baseball-team teamId="#[message.payload[teamId]]"/>
+    </flow>
 </mule>

@@ -24,8 +24,18 @@ public class espnConnectorTest extends FunctionalTestCase
     @Test
     public void testGetListBaseballAthletes() throws Exception
     {
-        runFlowAndExpectJSON("getListBaseballAthletes","success","status");
+        runFlowAndExpectJSON("getListMLBaseballAthletes","success","status");
     }
+
+    @Test
+    public void testGetListMLBaseballAthletesByGroup() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("group","1");
+
+        runFlowWithPayloadAndExpectJSON("getListMLBaseballAthletesByGroup", "success",  msg, "status");
+    }
+
 
     @Test
     public void testGetBaseballAthlete() throws Exception
@@ -33,8 +43,28 @@ public class espnConnectorTest extends FunctionalTestCase
         Map msg = new HashMap();
         msg.put("playerId","31662");
 
-        runFlowWithPayloadAndExpectJSON("getBaseballAthlete", "success",  msg, "status");
+        runFlowWithPayloadAndExpectJSON("getMLBaseballAthlete", "success",  msg, "status");
     }
+
+    @Test
+    public void testGetBaseballAthleteBySeason() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("playerId","31662");
+        msg.put("season","2012");
+
+        runFlowWithPayloadAndExpectJSON("getMLBaseballAthleteBySeason", "success",  msg, "status");
+    }
+
+    @Test
+    public void testGetBaseballTeam() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("teamId","2");
+
+        runFlowWithPayloadAndExpectJSON("getMLBaseballTeam", "success",  msg, "status");
+    }
+
 
     /**
     * Run the flow specified by name and assert equality on the expected output

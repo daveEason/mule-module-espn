@@ -7,6 +7,8 @@ import org.apache.commons.httpclient.HttpClient;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Processor;
+import org.mule.api.annotations.param.Default;
+import org.mule.api.annotations.param.Optional;
 import org.mule.api.annotations.rest.*;
 
 import java.io.IOException;
@@ -68,23 +70,25 @@ public abstract class espnConnector
         return this.httpClient;
     }
 
+
     /**
-     * getListBaseballAthletes
+     * getListMLBaseballAthletes
      *
-     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-list-baseball-athletes}
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-list-m-l-baseball-athletes}
      *
+     * @param group - ESPN group number representing an MLB division
      * @return String - JSON string representing MLB athletes
      * @throws IOException
      *
      */
     @Processor
     @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getListBaseballAthletes() throws IOException;
+    public abstract String getListMLBaseballAthletes(@Optional @Default("") @RestQueryParam("groups") String group) throws IOException;
 
     /**
-     * getBaseballAthlete
+     * getMLBaseballAthlete
      *
-     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-baseball-athlete}
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-m-l-baseball-athlete}
      *
      * @param playerId - ESPN player id
      * @return String - JSON string representing a particular MLB athletes
@@ -92,8 +96,23 @@ public abstract class espnConnector
      *
      */
     @Processor
-    @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes/{id}?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getBaseballAthlete(@RestUriParam("id") String playerId) throws IOException;
+    @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes/{playerId}/dates/{season}?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getMLBaseballAthlete(@RestUriParam("playerId") String playerId, @Optional @Default("") @RestUriParam("season") String season) throws IOException;
+
+
+    /**
+     * getMLBaseballTeam
+     *
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-m-l-baseball-team}
+     *
+     * @param teamId - ESPN MLB team identifier
+     * @return String - JSON string representing a particular MLB athletes associated with a particular team
+     * @throws IOException
+     *
+     */
+    @Processor
+    @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes/teams/{teamId}?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getMLBaseballTeam(@RestUriParam("teamId") String teamId) throws IOException;
 
 
 }

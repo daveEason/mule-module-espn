@@ -1,11 +1,7 @@
 
 WELCOME
 =======
-Congratulations you have just created a new Mule Cloud Connector!
-
-This wizard created a number of new classes and resources useful for Mule
-modules.  Each of the created files contains documentation and TODO
-items where necessary.  Here is an overview of what was created.
+Welcome to the Mule ESPN API Connector
 
 ./pom.xml:
 A maven project descriptor that describes how to build this module.
