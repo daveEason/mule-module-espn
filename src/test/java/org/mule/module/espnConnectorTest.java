@@ -22,162 +22,66 @@ public class espnConnectorTest extends FunctionalTestCase
     }
 
     /**
-     * Major League Baseball (MLB)
+     * ESPN Athletes API
      */
 
     @Test
-    public void testGetAthletes_MLB() throws Exception
+    public void testGetAthletes() throws Exception
     {
-        runFlowAndExpectJSON("getAthletes_MLB","success","status");
+        Map msg = new HashMap();
+        msg.put("resource","/sports/baseball/mlb");
+
+        runFlowWithPayloadAndExpectJSON("getAthletes","success", msg, "status");
     }
 
     @Test
-    public void testGetAthletes_MLB_ByGroup() throws Exception
+    public void testGetAthletes_ByGroup() throws Exception
     {
         Map msg = new HashMap();
+        msg.put("resource","/sports/baseball/mlb");
         msg.put("group","1");
 
-        runFlowWithPayloadAndExpectJSON("getAthletes_MLB_ByGroup", "success",  msg, "status");
+        runFlowWithPayloadAndExpectJSON("getAthletes_ByGroup", "success",  msg, "status");
     }
 
     @Test
-    public void testGetAthletes_MLB_ByPlayerId() throws Exception
+    public void testGetAthletes_ByPlayerId() throws Exception
     {
         Map msg = new HashMap();
+        msg.put("resource","/sports/baseball/mlb");
         msg.put("playerId","31662");
 
-        runFlowWithPayloadAndExpectJSON("getAthletes_MLB_ByPlayerId", "success",  msg, "status");
+        runFlowWithPayloadAndExpectJSON("getAthletes_ByPlayerId", "success",  msg, "status");
     }
 
     @Test
-    public void testGetAthletes_MLB_ByDates() throws Exception
+    public void testGetAthletes_ByDates() throws Exception
     {
         Map msg = new HashMap();
+        msg.put("resource","/sports/baseball/mlb");
         msg.put("playerId","31662");
         msg.put("dates","2012");
 
-        runFlowWithPayloadAndExpectJSON("getAthletes_MLB_ByDates", "success",  msg, "status");
+        runFlowWithPayloadAndExpectJSON("getAthletes_ByDates", "success",  msg, "status");
     }
 
     @Test
-    public void testGetTeams_MLB() throws Exception
-    {
-        runFlowAndExpectJSON("getTeams_MLB", "success", "status");
-    }
-
-    @Test
-    public void testGetTeams_MLB_ByTeamId() throws Exception
+    public void testGetTeams() throws Exception
     {
         Map msg = new HashMap();
+        msg.put("resource","/sports/baseball/mlb");
+
+        runFlowWithPayloadAndExpectJSON("getTeams", "success", msg, "status");
+    }
+
+    @Test
+    public void testGetTeams_ByTeamId() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","/sports/baseball/mlb");
         msg.put("teamId","2");
 
-        runFlowWithPayloadAndExpectJSON("getTeams_MLB_ByTeamId", "success",  msg, "status");
-    }
-
-    /**
-     * National Basketball Association (NBA)
-     */
-
-    @Test
-    public void testGetAthletes_NBA() throws Exception
-    {
-        runFlowAndExpectJSON("getAthletes_NBA","success","status");
-    }
-
-    @Test
-    public void testGetAthletes_NBA_ByGroup() throws Exception
-    {
-        Map msg = new HashMap();
-        msg.put("group","1");
-
-        runFlowWithPayloadAndExpectJSON("getAthletes_NBA_ByGroup", "success",  msg, "status");
-    }
-
-    @Test
-    public void testGetAthletes_NBA_ByPlayerId() throws Exception
-    {
-        Map msg = new HashMap();
-        msg.put("playerId","31662");
-
-        runFlowWithPayloadAndExpectJSON("getAthletes_NBA_ByPlayerId", "success",  msg, "status");
-    }
-
-    @Test
-    public void testGetAthletes_NBA_ByDates() throws Exception
-    {
-        Map msg = new HashMap();
-        msg.put("playerId","31662");
-        msg.put("dates","2012");
-
-        runFlowWithPayloadAndExpectJSON("getAthletes_NBA_ByDates", "success",  msg, "status");
-    }
-
-    @Test
-    public void testGetTeams_NBA() throws Exception
-    {
-        runFlowAndExpectJSON("getTeams_NBA", "success", "status");
-    }
-
-    @Test
-    public void testGetTeams_NBA_ByTeamId() throws Exception
-    {
-        Map msg = new HashMap();
-        msg.put("teamId","2");
-
-        runFlowWithPayloadAndExpectJSON("getTeams_NBA_ByTeamId", "success",  msg, "status");
-    }
-
-    /**
-     * National Basketball Association (NBA)
-     */
-
-    @Test
-    public void testGetAthletes_NFL() throws Exception
-    {
-        runFlowAndExpectJSON("getAthletes_NFL","success","status");
-    }
-
-    @Test
-    public void testGetAthletes_NFL_ByGroup() throws Exception
-    {
-        Map msg = new HashMap();
-        msg.put("group","1");
-
-        runFlowWithPayloadAndExpectJSON("getAthletes_NFL_ByGroup", "success",  msg, "status");
-    }
-
-    @Test
-    public void testGetAthletes_NFL_ByPlayerId() throws Exception
-    {
-        Map msg = new HashMap();
-        msg.put("playerId","31662");
-
-        runFlowWithPayloadAndExpectJSON("getAthletes_NFL_ByPlayerId", "success",  msg, "status");
-    }
-
-    @Test
-    public void testGetAthletes_NFL_ByDates() throws Exception
-    {
-        Map msg = new HashMap();
-        msg.put("playerId","31662");
-        msg.put("dates","2012");
-
-        runFlowWithPayloadAndExpectJSON("getAthletes_NFL_ByDates", "success",  msg, "status");
-    }
-
-    @Test
-    public void testGetTeams_NFL() throws Exception
-    {
-        runFlowAndExpectJSON("getTeams_NFL", "success", "status");
-    }
-
-    @Test
-    public void testGetTeams_NFL_ByTeamId() throws Exception
-    {
-        Map msg = new HashMap();
-        msg.put("teamId","2");
-
-        runFlowWithPayloadAndExpectJSON("getTeams_NFL_ByTeamId", "success",  msg, "status");
+        runFlowWithPayloadAndExpectJSON("getTeams_ByTeamId", "success",  msg, "status");
     }
 
     /**

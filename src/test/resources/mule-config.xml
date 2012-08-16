@@ -13,82 +13,32 @@
 
     <espn:config apiKey="${apiKey}"/>
 
-    <!-- Major League Baseball (MLB) -->
+    <!-- ESPN Athletes API -->
 
-    <flow name="getAthletes_MLB">
-        <espn:get-athletes-mlb/>
+    <flow name="getAthletes">
+        <espn:get-athletes resource="#[message.payload[resource]]"/>
     </flow>
 
-    <flow name="getAthletes_MLB_ByGroup">
-        <espn:get-athletes-mlb group="#[message.payload[group]]"/>
+    <flow name="getAthletes_ByGroup">
+        <espn:get-athletes resource="#[message.payload[resource]]" group="#[message.payload[group]]"/>
     </flow>
 
-    <flow name="getAthletes_MLB_ByPlayerId">
-        <espn:get-athletes-mlb playerId="#[message.payload[playerId]]"/>
+    <flow name="getAthletes_ByPlayerId">
+        <espn:get-athletes resource="#[message.payload[resource]]" playerId="#[message.payload[playerId]]"/>
     </flow>
 
-    <flow name="getAthletes_MLB_ByDates">
-        <espn:get-athletes-mlb playerId="#[message.payload[playerId]]" dates="#[message.payload[dates]]"/>
+    <flow name="getAthletes_ByDates">
+        <espn:get-athletes resource="#[message.payload[resource]]" playerId="#[message.payload[playerId]]" dates="#[message.payload[dates]]"/>
     </flow>
 
-    <flow name="getTeams_MLB">
-        <espn:get-teams-mlb/>
+    <!-- ESPN Teams API -->
+
+    <flow name="getTeams">
+        <espn:get-teams resource="#[message.payload[resource]]"/>
     </flow>
 
-    <flow name="getTeams_MLB_ByTeamId">
-        <espn:get-teams-mlb teamId="#[message.payload[teamId]]"/>
-    </flow>
-
-    <!-- National Basketball Association (NBA) -->
-
-    <flow name="getAthletes_NBA">
-        <espn:get-athletes-nba/>
-    </flow>
-
-    <flow name="getAthletes_NBA_ByGroup">
-        <espn:get-athletes-nba group="#[message.payload[group]]"/>
-    </flow>
-
-    <flow name="getAthletes_NBA_ByPlayerId">
-        <espn:get-athletes-nba playerId="#[message.payload[playerId]]"/>
-    </flow>
-
-    <flow name="getAthletes_NBA_ByDates">
-        <espn:get-athletes-nba playerId="#[message.payload[playerId]]" dates="#[message.payload[dates]]"/>
-    </flow>
-
-    <flow name="getTeams_NBA">
-        <espn:get-teams-nba/>
-    </flow>
-
-    <flow name="getTeams_NBA_ByTeamId">
-        <espn:get-teams-nba teamId="#[message.payload[teamId]]"/>
-    </flow>
-
-    <!-- National Football League (NFL) -->
-
-    <flow name="getAthletes_NFL">
-        <espn:get-athletes-nfl/>
-    </flow>
-
-    <flow name="getAthletes_NFL_ByGroup">
-        <espn:get-athletes-nfl group="#[message.payload[group]]"/>
-    </flow>
-
-    <flow name="getAthletes_NFL_ByPlayerId">
-        <espn:get-athletes-nfl playerId="#[message.payload[playerId]]"/>
-    </flow>
-
-    <flow name="getAthletes_NFL_ByDates">
-        <espn:get-athletes-nfl playerId="#[message.payload[playerId]]" dates="#[message.payload[dates]]"/>
-    </flow>
-
-    <flow name="getTeams_NFL">
-        <espn:get-teams-nfl/>
-    </flow>
-
-    <flow name="getTeams_NFL_ByTeamId">
-        <espn:get-teams-nfl teamId="#[message.payload[teamId]]"/>
+    <flow name="getTeams_ByTeamId">
+        <espn:get-teams resource="#[message.payload[resource]]" teamId="#[message.payload[teamId]]"/>
     </flow>
 
 </mule>
