@@ -3,11 +3,9 @@
 <mule xmlns="http://www.mulesoft.org/schema/mule/core"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns:context="http://www.springframework.org/schema/context"
-      xmlns:spring="http://www.springframework.org/schema/beans"
       xmlns:espn="http://www.mulesoft.org/schema/mule/espn"
       xsi:schemaLocation="
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
         http://www.mulesoft.org/schema/mule/espn http://www.mulesoft.org/schema/mule/espn/1.0-SNAPSHOT/mule-espn.xsd">
 
@@ -15,23 +13,82 @@
 
     <espn:config apiKey="${apiKey}"/>
 
-    <flow name="getListMLBaseballAthletes">
-        <espn:get-list-m-l-baseball-athletes/>
+    <!-- Major League Baseball (MLB) -->
+
+    <flow name="getAthletes_MLB">
+        <espn:get-athletes-mlb/>
     </flow>
 
-    <flow name="getListMLBaseballAthletesByGroup">
-        <espn:get-list-m-l-baseball-athletes group="#[message.payload[group]]"/>
+    <flow name="getAthletes_MLB_ByGroup">
+        <espn:get-athletes-mlb group="#[message.payload[group]]"/>
     </flow>
 
-    <flow name="getMLBaseballAthlete">
-        <espn:get-m-l-baseball-athlete playerId="#[message.payload[playerId]]"/>
+    <flow name="getAthletes_MLB_ByPlayerId">
+        <espn:get-athletes-mlb playerId="#[message.payload[playerId]]"/>
     </flow>
 
-    <flow name="getMLBaseballAthleteByDates">
-        <espn:get-m-l-baseball-athlete playerId="#[message.payload[playerId]]" dates="#[message.payload[dates]]"/>
+    <flow name="getAthletes_MLB_ByDates">
+        <espn:get-athletes-mlb playerId="#[message.payload[playerId]]" dates="#[message.payload[dates]]"/>
     </flow>
 
-    <flow name="getMLBaseballTeam">
-        <espn:get-m-l-baseball-team teamId="#[message.payload[teamId]]"/>
+    <flow name="getTeams_MLB">
+        <espn:get-teams-mlb/>
     </flow>
+
+    <flow name="getTeams_MLB_ByTeamId">
+        <espn:get-teams-mlb teamId="#[message.payload[teamId]]"/>
+    </flow>
+
+    <!-- National Basketball Association (NBA) -->
+
+    <flow name="getAthletes_NBA">
+        <espn:get-athletes-nba/>
+    </flow>
+
+    <flow name="getAthletes_NBA_ByGroup">
+        <espn:get-athletes-nba group="#[message.payload[group]]"/>
+    </flow>
+
+    <flow name="getAthletes_NBA_ByPlayerId">
+        <espn:get-athletes-nba playerId="#[message.payload[playerId]]"/>
+    </flow>
+
+    <flow name="getAthletes_NBA_ByDates">
+        <espn:get-athletes-nba playerId="#[message.payload[playerId]]" dates="#[message.payload[dates]]"/>
+    </flow>
+
+    <flow name="getTeams_NBA">
+        <espn:get-teams-nba/>
+    </flow>
+
+    <flow name="getTeams_NBA_ByTeamId">
+        <espn:get-teams-nba teamId="#[message.payload[teamId]]"/>
+    </flow>
+
+    <!-- National Football League (NFL) -->
+
+    <flow name="getAthletes_NFL">
+        <espn:get-athletes-nfl/>
+    </flow>
+
+    <flow name="getAthletes_NFL_ByGroup">
+        <espn:get-athletes-nfl group="#[message.payload[group]]"/>
+    </flow>
+
+    <flow name="getAthletes_NFL_ByPlayerId">
+        <espn:get-athletes-nfl playerId="#[message.payload[playerId]]"/>
+    </flow>
+
+    <flow name="getAthletes_NFL_ByDates">
+        <espn:get-athletes-nfl playerId="#[message.payload[playerId]]" dates="#[message.payload[dates]]"/>
+    </flow>
+
+    <flow name="getTeams_NFL">
+        <espn:get-teams-nfl/>
+    </flow>
+
+    <flow name="getTeams_NFL_ByTeamId">
+        <espn:get-teams-nfl teamId="#[message.payload[teamId]]"/>
+    </flow>
+
 </mule>

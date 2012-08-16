@@ -23,7 +23,8 @@ public abstract class espnConnector
 {
     public static final String BASE_URI = "http://api.espn.com/v1";
     public static final String MLB_RESOURCE = "/sports/baseball/mlb";
-
+    public static final String NBA_RESOURCE = "/sports/basketball/nba";
+    public static final String NFL_RESOURCE = "/sports/football/nfl";
 
     @RestHttpClient
     private HttpClient httpClient;
@@ -34,7 +35,6 @@ public abstract class espnConnector
     @Configurable
     @RestUriParam("apiKey")
     private String apiKey;
-
 
     public espnConnector()
     {
@@ -70,57 +70,131 @@ public abstract class espnConnector
         return this.httpClient;
     }
 
-
     /**
-     * getListMLBaseballAthletes
-     *
-     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-list-m-l-baseball-athletes}
-     *
-     * @param group - ESPN group number representing an MLB division
-     * @return String - JSON string representing MLB athletes
-     * @throws IOException
-     *
+     * Major League Baseball (MLB)
      */
-    @Processor
-    @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getListMLBaseballAthletes(@Optional @Default("") @RestQueryParam("groups") String group) throws IOException;
 
     /**
-     * getMLBaseballAthlete
+     * getAthletesMlb
      *
-     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-m-l-baseball-athlete}
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-athletes-mlb}
      *
      * @param playerId - ESPN player id
      * @param dates - ESPN dates values (year) for requested data (i.e. 2011, 2012, etc...)
+     * @param group - ESPN group (integer) allows filtering by "group" or division
      * @param enable - ESPN optional flag to enable specific info (comma separated string) valid values: stats/logos/notes/competitors
      * @param seasonType - ESPN season type accepts pre/reg/post for preseason, regular and postseason respectively
      * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
-     * @return String - JSON string representing a particular MLB athletes
+     * @return String - JSON string representing athlete data
      * @throws IOException
      *
      */
     @Processor
     @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes/{playerId}/dates/{dates}?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getMLBaseballAthlete(@RestUriParam("playerId") String playerId,
-                                                @Optional @Default("") @RestUriParam("dates") String dates,
-                                                @Optional @Default("") @RestQueryParam("enable") String enable,
-                                                @Optional @Default("reg") @RestQueryParam("seasontype") String seasonType,
-                                                @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
-
+    public abstract String getAthletesMlb(@Optional @Default("") @RestUriParam("playerId") String playerId,
+                                          @Optional @Default("") @RestUriParam("dates") String dates,
+                                          @Optional @Default("") @RestQueryParam("groups") String group,
+                                          @Optional @Default("") @RestQueryParam("enable") String enable,
+                                          @Optional @Default("reg") @RestQueryParam("seasontype") String seasonType,
+                                          @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
 
     /**
-     * getMLBaseballTeam
+     * getTeamsMlb
      *
-     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-m-l-baseball-team}
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-teams-mlb}
      *
-     * @param teamId - ESPN MLB team identifier
-     * @return String - JSON string representing a particular MLB athletes associated with a particular team
+     * @param teamId - ESPN team identifier
+     * @return String - JSON string representing team data
      * @throws IOException
      *
      */
     @Processor
     @RestCall(uri = BASE_URI + MLB_RESOURCE + "/athletes/teams/{teamId}?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getMLBaseballTeam(@RestUriParam("teamId") String teamId) throws IOException;
+    public abstract String getTeamsMlb(@Optional @Default("") @RestUriParam("teamId") String teamId) throws IOException;
 
+
+    /**
+     * National Basketball Association (NBA)
+     */
+
+    /**
+     * getAthletesNba
+     *
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-athletes-nba}
+     *
+     * @param playerId - ESPN player id
+     * @param dates - ESPN dates values (year) for requested data (i.e. 2011, 2012, etc...)
+     * @param group - ESPN group (integer) allows filtering by "group" or division
+     * @param enable - ESPN optional flag to enable specific info (comma separated string) valid values: stats/logos/notes/competitors
+     * @param seasonType - ESPN season type accepts pre/reg/post for preseason, regular and postseason respectively
+     * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
+     * @return String - JSON string representing athlete data
+     * @throws IOException
+     *
+     */
+    @Processor
+    @RestCall(uri = BASE_URI + NBA_RESOURCE + "/athletes/{playerId}/dates/{dates}?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getAthletesNba(@Optional @Default("") @RestUriParam("playerId") String playerId,
+                                                @Optional @Default("") @RestUriParam("dates") String dates,
+                                                @Optional @Default("") @RestQueryParam("groups") String group,
+                                                @Optional @Default("") @RestQueryParam("enable") String enable,
+                                                @Optional @Default("reg") @RestQueryParam("seasontype") String seasonType,
+                                                @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+
+    /**
+     * getTeamsNba
+     *
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-teams-nba}
+     *
+     * @param teamId - ESPN team identifier
+     * @return String - JSON string representing team data
+     * @throws IOException
+     *
+     */
+    @Processor
+    @RestCall(uri = BASE_URI + NBA_RESOURCE + "/athletes/teams/{teamId}?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getTeamsNba(@Optional @Default("") @RestUriParam("teamId") String teamId) throws IOException;
+
+    /**
+     * National Football League (NFL)
+     */
+
+    /**
+     * getAthletesNfl
+     *
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-athletes-nfl}
+     *
+     * @param playerId - ESPN player id
+     * @param dates - ESPN dates values (year) for requested data (i.e. 2011, 2012, etc...)
+     * @param group - ESPN group (integer) allows filtering by "group" or division
+     * @param enable - ESPN optional flag to enable specific info (comma separated string) valid values: stats/logos/notes/competitors
+     * @param seasonType - ESPN season type accepts pre/reg/post for preseason, regular and postseason respectively
+     * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
+     * @return String - JSON string representing athlete data
+     * @throws IOException
+     *
+     */
+    @Processor
+    @RestCall(uri = BASE_URI + NFL_RESOURCE + "/athletes/{playerId}/dates/{dates}?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getAthletesNfl(@Optional @Default("") @RestUriParam("playerId") String playerId,
+                                          @Optional @Default("") @RestUriParam("dates") String dates,
+                                          @Optional @Default("") @RestQueryParam("groups") String group,
+                                          @Optional @Default("") @RestQueryParam("enable") String enable,
+                                          @Optional @Default("reg") @RestQueryParam("seasontype") String seasonType,
+                                          @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+
+    /**
+     * getTeamsNfl
+     *
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-teams-nfl}
+     *
+     * @param teamId - ESPN team identifier
+     * @return String - JSON string representing team data
+     * @throws IOException
+     *
+     */
+    @Processor
+    @RestCall(uri = BASE_URI + NFL_RESOURCE + "/athletes/teams/{teamId}?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getTeamsNfl(@Optional @Default("") @RestUriParam("teamId") String teamId) throws IOException;
 
 }
