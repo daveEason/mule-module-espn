@@ -29,37 +29,37 @@ public class espnConnectorTest extends FunctionalTestCase
     public void testGetAthletes() throws Exception
     {
         Map msg = new HashMap();
-        msg.put("resource","/sports/baseball/mlb");
+        msg.put("resource","sports/baseball/mlb");
 
-        runFlowWithPayloadAndExpectJSON("getAthletes","success", msg, "status");
+        runFlowWithPayloadAndExpectJSON("getAthletes", "success",  msg, "status");
     }
 
     @Test
     public void testGetAthletes_ByGroup() throws Exception
     {
         Map msg = new HashMap();
-        msg.put("resource","/sports/baseball/mlb");
+        msg.put("resource","sports/baseball/mlb");
         msg.put("group","1");
 
         runFlowWithPayloadAndExpectJSON("getAthletes_ByGroup", "success",  msg, "status");
     }
 
     @Test
-    public void testGetAthletes_ByPlayerId() throws Exception
+    public void testGetAthletes_ByAthleteId() throws Exception
     {
         Map msg = new HashMap();
-        msg.put("resource","/sports/baseball/mlb");
-        msg.put("playerId","31662");
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("athleteId","31662");
 
-        runFlowWithPayloadAndExpectJSON("getAthletes_ByPlayerId", "success",  msg, "status");
+        runFlowWithPayloadAndExpectJSON("getAthletes_ByAthleteId", "success",  msg, "status");
     }
 
     @Test
     public void testGetAthletes_ByDates() throws Exception
     {
         Map msg = new HashMap();
-        msg.put("resource","/sports/baseball/mlb");
-        msg.put("playerId","31662");
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("athleteId","31662");
         msg.put("dates","2012");
 
         runFlowWithPayloadAndExpectJSON("getAthletes_ByDates", "success",  msg, "status");
@@ -69,7 +69,7 @@ public class espnConnectorTest extends FunctionalTestCase
     public void testGetTeams() throws Exception
     {
         Map msg = new HashMap();
-        msg.put("resource","/sports/baseball/mlb");
+        msg.put("resource","sports/baseball/mlb");
 
         runFlowWithPayloadAndExpectJSON("getTeams", "success", msg, "status");
     }
@@ -78,10 +78,71 @@ public class espnConnectorTest extends FunctionalTestCase
     public void testGetTeams_ByTeamId() throws Exception
     {
         Map msg = new HashMap();
-        msg.put("resource","/sports/baseball/mlb");
+        msg.put("resource","sports/baseball/mlb");
         msg.put("teamId","2");
 
         runFlowWithPayloadAndExpectJSON("getTeams_ByTeamId", "success",  msg, "status");
+    }
+
+    /**
+     * ESPN Headlines API
+     */
+
+    @Test
+    public void testGetNews() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+
+        runFlowWithPayloadAndExpectJSON("getNews","success", msg, "status");
+    }
+
+    @Test
+    public void testGetNews_ByNewsId() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("newsId","2");
+
+        runFlowWithPayloadAndExpectJSON("getNews_ByNewsId","success", msg, "status");
+    }
+
+    @Test
+    public void testGetNewsHeadlines() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+
+        runFlowWithPayloadAndExpectJSON("getNewsHeadlines","success", msg, "status");
+    }
+
+    @Test
+    public void testGetNewsHeadlinesTop() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+
+        runFlowWithPayloadAndExpectJSON("getNewsHeadlinesTop","success", msg, "status");
+    }
+
+    @Test
+    public void testGetAthletesNews() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("athleteId","31662");
+
+        runFlowWithPayloadAndExpectJSON("getAthletesNews","success", msg, "status");
+    }
+
+    @Test
+    public void testGetTeamsNews() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("teamId","2");
+
+        runFlowWithPayloadAndExpectJSON("getTeamsNews","success", msg, "status");
     }
 
     /**
