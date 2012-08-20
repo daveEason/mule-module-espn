@@ -121,6 +121,20 @@ public abstract class espnConnector
      * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-news newsId="#[message.payload[newsId]]"}
      *
      * @param resource - ESPN resource (i.e. /espnw)
+     * @return String - JSON stream of all news for current date.
+     * @throws IOException
+     *
+     */
+    @Processor
+    @RestCall(uri = BASE_URI + "/{resource}/news?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getNews(@RestUriParam("resource") String resource) throws IOException;
+
+    /**
+     * getNewsById
+     *
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-news-by-id newsId="#[message.payload[newsId]]"}
+     *
+     * @param resource - ESPN resource (i.e. /espnw)
      * @param newsId - ESPN specific story identifier
      * @return String - JSON stream of all news for current date.
      * @throws IOException
@@ -128,7 +142,7 @@ public abstract class espnConnector
      */
     @Processor
     @RestCall(uri = BASE_URI + "/{resource}/news/{newsId}?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getNews(@RestUriParam("resource") String resource,
+    public abstract String getNewsById(@RestUriParam("resource") String resource,
                                    @Optional @Default("") @RestUriParam("newsId") String newsId) throws IOException;
 
     /**
