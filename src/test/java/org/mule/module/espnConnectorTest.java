@@ -66,6 +66,34 @@ public class espnConnectorTest extends FunctionalTestCase
     }
 
     @Test
+    public void testGetAthletes_BySeasonType() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("athleteId","31662");
+        msg.put("dates","2012");
+        msg.put("seasonType", "reg");
+
+        runFlowWithPayloadAndExpectJSON("getAthletes_BySeasonType", "success",  msg, "status");
+    }
+
+    @Test
+    public void testGetAthletes_ByLanguage() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("athleteId","31662");
+        msg.put("dates","2012");
+        msg.put("lang","es");
+
+        runFlowWithPayloadAndExpectJSON("getAthletes_ByLanguage", "success",  msg, "status");
+    }
+
+    /**
+     * ESPN Teams API
+     */
+
+    @Test
     public void testGetTeams() throws Exception
     {
         Map msg = new HashMap();
@@ -74,16 +102,44 @@ public class espnConnectorTest extends FunctionalTestCase
         runFlowWithPayloadAndExpectJSON("getTeams", "success", msg, "status");
     }
 
-//    Currently this information is not publicly on ESPN API - Skipping test for now!
-//    @Test
-//    public void testGetTeams_ByTeamId() throws Exception
-//    {
-//        Map msg = new HashMap();
-//        msg.put("resource","sports/baseball/mlb");
-//        msg.put("teamId","2");
-//
-//        runFlowWithPayloadAndExpectJSON("getTeams_ByTeamId", "success",  msg, "status");
-//    }
+    @Test
+    public void testGetTeams_EnableVenues() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+
+        runFlowWithPayloadAndExpectJSON("getTeams_EnableVenues", "success", msg, "status");
+    }
+
+    @Test
+    public void testGetTeams_ByGroup() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("group","1");
+
+        runFlowWithPayloadAndExpectJSON("getTeams_ByGroup", "success", msg, "status");
+    }
+
+    @Test
+    public void testGetTeams_ByLanguage() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("lang","es");
+
+        runFlowWithPayloadAndExpectJSON("getTeams_ByLanguage", "success", msg, "status");
+    }
+
+    @Test
+    public void testGetTeams_ByTeamId() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("teamId","2");
+
+        runFlowWithPayloadAndExpectJSON("getTeams_ByTeamId", "success",  msg, "status");
+    }
 
     /**
      * ESPN Headlines API

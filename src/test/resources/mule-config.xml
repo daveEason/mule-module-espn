@@ -35,10 +35,35 @@
         <logger level="ERROR" message="Message payload = #[message.payload]"/>
     </flow>
 
+    <flow name="getAthletes_BySeasonType">
+        <espn:get-athletes resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]" dates="#[message.payload['dates']]" seasonType="#[message.payload['seasonType']]"/>
+        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+    </flow>
+
+    <flow name="getAthletes_ByLanguage">
+        <espn:get-athletes resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]" dates="#[message.payload['dates']]" language="#[message.payload['lang']]"/>
+        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+    </flow>
+
     <!-- ESPN Teams API -->
 
     <flow name="getTeams">
         <espn:get-teams resource="#[message.payload['resource']]"/>
+        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+    </flow>
+
+    <flow name="getTeams_EnableVenues">
+        <espn:get-teams resource="#[message.payload['resource']]" enable="venues"/>
+        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+    </flow>
+
+    <flow name="getTeams_ByGroup">
+        <espn:get-teams resource="#[message.payload['resource']]" groups="#[message.payload['group']]"/>
+        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+    </flow>
+
+    <flow name="getTeams_ByLanguage">
+        <espn:get-teams resource="#[message.payload['resource']]" language="#[message.payload['lang']]"/>
         <logger level="ERROR" message="Message payload = #[message.payload]"/>
     </flow>
 

@@ -109,9 +109,12 @@ public abstract class espnConnector
      *
      */
     @Processor
-    @RestCall(uri = BASE_URI + "/{resource}/athletes/teams/{teamId}?apikey={apiKey}", method = HttpMethod.GET)
+    @RestCall(uri = BASE_URI + "/{resource}/teams/{teamId}?apikey={apiKey}", method = HttpMethod.GET)
     public abstract String getTeams(@RestUriParam("resource") String resource,
-                                    @Optional @Default("") @RestUriParam("teamId") String teamId) throws IOException;
+                                    @Optional @Default("") @RestUriParam("teamId") String teamId,
+                                    @Optional @Default("") @RestQueryParam("enable") String enable,
+                                    @Optional @Default("") @RestQueryParam("groups") String groups,
+                                    @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
 
     /* ESPN Headlines API - http://developer.espn.com/docs/headlines */
 
