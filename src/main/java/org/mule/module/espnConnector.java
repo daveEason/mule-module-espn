@@ -78,7 +78,7 @@ public abstract class espnConnector
      * @param athleteId - ESPN player id
      * @param dates - ESPN dates values (year) for requested data (i.e. 2011, 2012, etc...)
      * @param group - ESPN group (integer) allows filtering by "group" or division
-     * @param enable - ESPN optional flag to enable specific info (comma separated string) valid values: stats/logos/notes/competitors
+     * @param enable - ESPN optional flag to enable specific info (comma separated string) valid values: [stats|logos|notes|competitors]
      * @param seasonType - ESPN season type accepts pre/reg/post for preseason, regular and postseason respectively
      * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON string representing athlete data
@@ -104,6 +104,9 @@ public abstract class espnConnector
      *
      * @param resource - ESPN resource (i.e. /sports/baseball/mlb)
      * @param teamId - ESPN team identifier
+     * @param enable - ESPN optional flag to enable specific info (comma separated string) valid values: [venues|stats|roster|leaders]
+     * @param groups - ESPN group (integer) allows filtering by "group" or division
+     * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON string representing team data
      * @throws IOException
      *
@@ -124,13 +127,19 @@ public abstract class espnConnector
      * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-news newsId="#[message.payload[newsId]]"}
      *
      * @param resource - ESPN resource (i.e. /espnw)
+     * @param dates - Integer in the form of "yyyymmdd" to get news for a particular date.
+     * @param insider - ESPN content to be included, valid values: yes, no, only
+     * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON stream of all news for current date.
      * @throws IOException
      *
      */
     @Processor
     @RestCall(uri = BASE_URI + "/{resource}/news?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getNews(@RestUriParam("resource") String resource) throws IOException;
+    public abstract String getNews(@RestUriParam("resource") String resource,
+                                   @Optional @Default("") @RestQueryParam("dates") String dates,
+                                   @Optional @Default("yes") @RestQueryParam("insider") String insider,
+                                   @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
 
     /**
      * getNewsById
@@ -139,6 +148,9 @@ public abstract class espnConnector
      *
      * @param resource - ESPN resource (i.e. /espnw)
      * @param newsId - ESPN specific story identifier
+     * @param dates - Integer in the form of "yyyymmdd" to get news for a particular date.
+     * @param insider - ESPN content to be included, valid values: yes, no, only
+     * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON stream of all news for current date.
      * @throws IOException
      *
@@ -146,7 +158,11 @@ public abstract class espnConnector
     @Processor
     @RestCall(uri = BASE_URI + "/{resource}/news/{newsId}?apikey={apiKey}", method = HttpMethod.GET)
     public abstract String getNewsById(@RestUriParam("resource") String resource,
-                                   @Optional @Default("") @RestUriParam("newsId") String newsId) throws IOException;
+                                   @Optional @Default("") @RestUriParam("newsId") String newsId,
+                                   @Optional @Default("") @RestQueryParam("dates") String dates,
+                                   @Optional @Default("yes") @RestQueryParam("insider") String insider,
+                                   @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+
 
     /**
      * getNewsHeadlines
@@ -154,13 +170,18 @@ public abstract class espnConnector
      * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-news-headlines}
      *
      * @param resource - ESPN resource (i.e. /espnw)
+     * @param insider - ESPN content to be included, valid values: yes, no, only
+     * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON Top stories as chosen by ESPN editorial staff.
      * @throws IOException
      *
      */
     @Processor
     @RestCall(uri = BASE_URI + "/{resource}/news/headlines?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getNewsHeadlines(@RestUriParam("resource") String resource) throws IOException;
+    public abstract String getNewsHeadlines(@RestUriParam("resource") String resource,
+                                            @Optional @Default("yes") @RestQueryParam("insider") String insider,
+                                            @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+
 
     /**
      * getNewsHeadlinesTop
@@ -168,13 +189,20 @@ public abstract class espnConnector
      * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-news-headlines-top}
      *
      * @param resource - ESPN resource (i.e. /espnw)
+     * @param insider - ESPN content to be included, valid values: yes, no, only
+     * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
+     * @param region -  Can be used in conjunction with the lang query string parameter to return focused headlines for a particular region, where available.
      * @return String - JSON top stories as shown on ESPN.com home page. Only applicable to /sports resource.
      * @throws IOException
      *
      */
     @Processor
     @RestCall(uri = BASE_URI + "/{resource}/news/headlines/top?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getNewsHeadlinesTop(@RestUriParam("resource") String resource) throws IOException;
+    public abstract String getNewsHeadlinesTop(@RestUriParam("resource") String resource,
+                                               @Optional @Default("yes") @RestQueryParam("insider") String insider,
+                                               @Optional @Default("en") @RestQueryParam("lang") String language,
+                                               @Optional @Default("us") @RestQueryParam("region") String region) throws IOException;
+
 
     /**
      * getAthletesNews
@@ -183,6 +211,9 @@ public abstract class espnConnector
      *
      * @param resource - ESPN resource (i.e. /espnw)
      * @param athleteId - ESPN identifier for a particular player/athlete.
+     * @param dates - Integer in the form of "yyyymmdd" to get news for a particular date.
+     * @param insider - ESPN content to be included, valid values: yes, no, only
+     * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON stories about a particular player/athlete.
      * @throws IOException
      *
@@ -190,7 +221,11 @@ public abstract class espnConnector
     @Processor
     @RestCall(uri = BASE_URI + "/{resource}/athletes/{athleteId}/news?apikey={apiKey}", method = HttpMethod.GET)
     public abstract String getAthletesNews(@RestUriParam("resource") String resource,
-                                           @RestUriParam("athleteId") String athleteId) throws IOException;
+                                           @RestUriParam("athleteId") String athleteId,
+                                           @Optional @Default("") @RestQueryParam("dates") String dates,
+                                           @Optional @Default("yes") @RestQueryParam("insider") String insider,
+                                           @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+
 
     /**
      * getTeamsNews
@@ -199,6 +234,9 @@ public abstract class espnConnector
      *
      * @param resource - ESPN resource (i.e. /espnw)
      * @param teamId - ESPN identifier for a particular team.
+     * @param dates - Integer in the form of "yyyymmdd" to get news for a particular date.
+     * @param insider - ESPN content to be included, valid values: yes, no, only
+     * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON stories about a particular player/athlete.
      * @throws IOException
      *
@@ -206,7 +244,57 @@ public abstract class espnConnector
     @Processor
     @RestCall(uri = BASE_URI + "/{resource}/teams/{teamId}/news?apikey={apiKey}", method = HttpMethod.GET)
     public abstract String getTeamsNews(@RestUriParam("resource") String resource,
-                                        @RestUriParam("teamId") String teamId) throws IOException;
+                                        @RestUriParam("teamId") String teamId,
+                                        @Optional @Default("") @RestQueryParam("dates") String dates,
+                                        @Optional @Default("yes") @RestQueryParam("insider") String insider,
+                                        @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
 
+
+    /**
+    * ESPN Helper API Calls
+    */
+
+    /**
+     * getAllSports
+     *
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-sports}
+     *
+     * @return String - JSON stories about a particular player/athlete.
+     * @throws IOException
+     *
+     */
+    @Processor
+    @RestCall(uri = BASE_URI + "/sports?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getSports() throws IOException;
+
+    /**
+     * getSportsOrganizingBodies
+     *
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-sports-organizing-bodies}
+     *
+     * @param sport - ESPN sport name
+     * @return String - JSON stories about a particular player/athlete.
+     * @throws IOException
+     *
+     */
+    @Processor
+    @RestCall(uri = BASE_URI + "/sports/{sport}?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getSportsOrganizingBodies(@RestUriParam("sport") String sport) throws IOException;
+
+    /**
+     * getSportsOrganizingGroupsDivisions
+     *
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-sports-organizing-groups-divisions}
+     *
+     * @param sport - ESPN sport name
+     * @param league - ESPN league abbreviation (organizing body)
+     * @return String - JSON stories about a particular player/athlete.
+     * @throws IOException
+     *
+     */
+    @Processor
+    @RestCall(uri = BASE_URI + "/sports/{sport}/{league}?apikey={apiKey}", method = HttpMethod.GET)
+    public abstract String getSportsOrganizingGroupsDivisions(@RestUriParam("sport") String sport,
+                                                              @RestUriParam("league") String league) throws IOException;
 
 }

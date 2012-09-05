@@ -146,7 +146,7 @@ public class espnConnectorTest extends FunctionalTestCase
      */
 
     @Test
-    public void testGetNews() throws Exception
+    public void failingTestGetNews() throws Exception
     {
         Map msg = new HashMap();
         msg.put("resource","sports/baseball/mlb");
@@ -155,7 +155,40 @@ public class espnConnectorTest extends FunctionalTestCase
     }
 
     @Test
-    public void testGetNews_ByNewsId() throws Exception
+    public void testGetNews_ByDates() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("dates","20120821");
+
+        runFlowWithPayloadAndExpectJSON("getNews_ByDates","success", msg, "status");
+    }
+
+
+    @Test
+    public void failingTestGetNews_ByInsider() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("insider","only");
+
+        runFlowWithPayloadAndExpectJSON("getNews_ByInsider","success", msg, "status");
+    }
+
+
+    @Test
+    public void failingTestGetNews_ByLanguage() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("lang","es");
+
+        runFlowWithPayloadAndExpectJSON("getNews_ByLanguage","success", msg, "status");
+    }
+
+
+    @Test
+    public void failingTestGetNews_ByNewsId() throws Exception
     {
         Map msg = new HashMap();
         msg.put("resource","sports/baseball/mlb");
@@ -183,7 +216,18 @@ public class espnConnectorTest extends FunctionalTestCase
     }
 
     @Test
-    public void testGetAthletesNews() throws Exception
+    public void testGetNewsHeadlinesTop_ByLanguageAndRegion() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/soccer");
+        msg.put("lang","es");
+        msg.put("region","ar");
+
+        runFlowWithPayloadAndExpectJSON("getNewsHeadlinesTop_ByLanguageAndRegion","success", msg, "status");
+    }
+
+    @Test
+    public void failingTestGetAthletesNews() throws Exception
     {
         Map msg = new HashMap();
         msg.put("resource","sports/baseball/mlb");
@@ -193,7 +237,7 @@ public class espnConnectorTest extends FunctionalTestCase
     }
 
     @Test
-    public void testGetTeamsNews() throws Exception
+    public void failingTestGetTeamsNews() throws Exception
     {
         Map msg = new HashMap();
         msg.put("resource","sports/baseball/mlb");
@@ -201,6 +245,36 @@ public class espnConnectorTest extends FunctionalTestCase
 
         runFlowWithPayloadAndExpectJSON("getTeamsNews","success", msg, "status");
     }
+
+    /**
+     * ESPN Helper API
+     */
+
+    @Test
+    public void testGetSports() throws Exception
+    {
+        runFlowAndExpectJSON("getSports","success", "status");
+    }
+
+    @Test
+    public void testGetSportsOrganizingBodies() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("sport","baseball");
+
+        runFlowWithPayloadAndExpectJSON("getSportsOrganizingBodies","success", msg, "status");
+    }
+
+    @Test
+    public void testGetSportsOrganizingGroupsDivisions() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("sport","baseball");
+        msg.put("league","mlb");
+
+        runFlowWithPayloadAndExpectJSON("getSportsOrganizingGroupsDivisions","success", msg, "status");
+    }
+
 
     /**
     * Run the flow specified by name and assert equality on the expected output
