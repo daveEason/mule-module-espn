@@ -14,7 +14,7 @@ import org.mule.api.annotations.rest.*;
 import java.io.IOException;
 
 /**
- * Cloud Connector
+ * Mule ESPN API Connector - Connect Mule applications to the ESPN developer API (see http://developer.espn.com/)
  *
  * @author MuleSoft, Inc.
  */
@@ -82,7 +82,7 @@ public abstract class espnConnector
      * @param seasonType - ESPN season type accepts pre/reg/post for preseason, regular and postseason respectively
      * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON string representing athlete data
-     * @throws IOException
+     * @throws IOException - This is throwing an IOException if their is a communications error
      *
      */
     @Processor
@@ -108,7 +108,7 @@ public abstract class espnConnector
      * @param groups - ESPN group (integer) allows filtering by "group" or division
      * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON string representing team data
-     * @throws IOException
+     * @throws IOException - This is throwing an IOException if their is a communications error
      *
      */
     @Processor
@@ -124,14 +124,14 @@ public abstract class espnConnector
     /**
      * getNews
      *
-     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-news newsId="#[message.payload[newsId]]"}
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-news}
      *
      * @param resource - ESPN resource (i.e. /espnw)
      * @param dates - Integer in the form of "yyyymmdd" to get news for a particular date.
      * @param insider - ESPN content to be included, valid values: yes, no, only
      * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON stream of all news for current date.
-     * @throws IOException
+     * @throws IOException - This is throwing an IOException if their is a communications error - This is throwing an IOException if their is a communications error
      *
      */
     @Processor
@@ -144,7 +144,7 @@ public abstract class espnConnector
     /**
      * getNewsById
      *
-     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-news-by-id newsId="#[message.payload[newsId]]"}
+     * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-news-by-id}
      *
      * @param resource - ESPN resource (i.e. /espnw)
      * @param newsId - ESPN specific story identifier
@@ -152,7 +152,7 @@ public abstract class espnConnector
      * @param insider - ESPN content to be included, valid values: yes, no, only
      * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON stream of all news for current date.
-     * @throws IOException
+     * @throws IOException - This is throwing an IOException if their is a communications error - This is throwing an IOException if their is a communications error
      *
      */
     @Processor
@@ -173,7 +173,7 @@ public abstract class espnConnector
      * @param insider - ESPN content to be included, valid values: yes, no, only
      * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON Top stories as chosen by ESPN editorial staff.
-     * @throws IOException
+     * @throws IOException - This is throwing an IOException if their is a communications error - This is throwing an IOException if their is a communications error
      *
      */
     @Processor
@@ -193,7 +193,7 @@ public abstract class espnConnector
      * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @param region -  Can be used in conjunction with the lang query string parameter to return focused headlines for a particular region, where available.
      * @return String - JSON top stories as shown on ESPN.com home page. Only applicable to /sports resource.
-     * @throws IOException
+     * @throws IOException - This is throwing an IOException if their is a communications error
      *
      */
     @Processor
@@ -215,7 +215,7 @@ public abstract class espnConnector
      * @param insider - ESPN content to be included, valid values: yes, no, only
      * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON stories about a particular player/athlete.
-     * @throws IOException
+     * @throws IOException - This is throwing an IOException if their is a communications error
      *
      */
     @Processor
@@ -238,7 +238,7 @@ public abstract class espnConnector
      * @param insider - ESPN content to be included, valid values: yes, no, only
      * @param language - ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @return String - JSON stories about a particular player/athlete.
-     * @throws IOException
+     * @throws IOException - This is throwing an IOException if their is a communications error
      *
      */
     @Processor
@@ -260,7 +260,7 @@ public abstract class espnConnector
      * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-sports}
      *
      * @return String - JSON stories about a particular player/athlete.
-     * @throws IOException
+     * @throws IOException - This is throwing an IOException if their is a communications error
      *
      */
     @Processor
@@ -274,7 +274,7 @@ public abstract class espnConnector
      *
      * @param sport - ESPN sport name
      * @return String - JSON stories about a particular player/athlete.
-     * @throws IOException
+     * @throws IOException - This is throwing an IOException if their is a communications error
      *
      */
     @Processor
@@ -289,7 +289,7 @@ public abstract class espnConnector
      * @param sport - ESPN sport name
      * @param league - ESPN league abbreviation (organizing body)
      * @return String - JSON stories about a particular player/athlete.
-     * @throws IOException
+     * @throws IOException - This is throwing an IOException if their is a communications error
      *
      */
     @Processor
