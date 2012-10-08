@@ -17,128 +17,128 @@
 
     <flow name="getAthletes">
         <espn:get-athletes resource="#[message.payload['resource']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getAthletes_ByGroup">
         <espn:get-athletes resource="#[message.payload['resource']]" group="#[message.payload['group']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getAthletes_ByAthleteId">
         <espn:get-athletes resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getAthletes_ByDates">
         <espn:get-athletes resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]" dates="#[message.payload['dates']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getAthletes_BySeasonType">
         <espn:get-athletes resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]" dates="#[message.payload['dates']]" seasonType="#[message.payload['seasonType']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getAthletes_ByLanguage">
         <espn:get-athletes resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]" dates="#[message.payload['dates']]" language="#[message.payload['lang']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <!-- ESPN Teams API -->
 
     <flow name="getTeams">
         <espn:get-teams resource="#[message.payload['resource']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getTeams_EnableVenues">
         <espn:get-teams resource="#[message.payload['resource']]" enable="venues"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getTeams_ByGroup">
         <espn:get-teams resource="#[message.payload['resource']]" groups="#[message.payload['group']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getTeams_ByLanguage">
         <espn:get-teams resource="#[message.payload['resource']]" language="#[message.payload['lang']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getTeams_ByTeamId">
         <espn:get-teams resource="#[message.payload['resource']]" teamId="#[message.payload['teamId']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <!-- ESPN Headlines API -->
 
     <flow name="getNews">
         <espn:get-news resource="#[message.payload['resource']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getNews_ByDates">
         <espn:get-news resource="#[message.payload['resource']]" dates="#[message.payload['dates']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getNews_ByInsider">
         <espn:get-news resource="#[message.payload['resource']]" insider="#[message.payload['insider']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getNews_ByLanguage">
         <espn:get-news resource="#[message.payload['resource']]" language="#[message.payload['lang']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getNews_ByNewsId">
         <espn:get-news-by-id resource="#[message.payload['resource']]" newsId="#[message.payload['newsId']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getNewsHeadlines">
         <espn:get-news-headlines resource="#[message.payload['resource']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getNewsHeadlinesTop">
         <espn:get-news-headlines-top resource="#[message.payload['resource']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getNewsHeadlinesTop_ByLanguageAndRegion">
         <espn:get-news-headlines-top resource="#[message.payload['resource']]" language="#[message.payload['lang']]" region="#[message.payload['region']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getAthletesNews">
         <espn:get-athletes-news resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getTeamsNews">
         <espn:get-teams-news resource="#[message.payload['resource']]" teamId="#[message.payload['teamId']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <!-- ESPN Helper API -->
 
     <flow name="getSports">
         <espn:get-sports/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getSportsOrganizingBodies">
         <espn:get-sports-organizing-bodies sport="#[message.payload['sport']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
     <flow name="getSportsOrganizingGroupsDivisions">
         <espn:get-sports-organizing-groups-divisions sport="#[message.payload['sport']]" league="#[message.payload['league']]"/>
-        <logger level="ERROR" message="Message payload = #[message.payload]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
 </mule>
