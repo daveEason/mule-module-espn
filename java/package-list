@@ -1,0 +1,7 @@
+org.mule.module
+org.mule.module.adapters
+org.mule.module.agents
+org.mule.module.config
+org.mule.module.process
+org.mule.module.processors
+
