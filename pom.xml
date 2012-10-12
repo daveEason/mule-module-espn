@@ -288,4 +288,14 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
+    <scm>
+        <connection>
+            scm:git:git://github.com:daveEason/mule-module-espn.git
+        </connection>
+        <developerConnection>
+            scm:git:git@github.com:daveEason/mule-module-espn.git
+        </developerConnection>
+        <url>http://github.com/daveEason/mule-module-espn</url>
+    </scm>
 </project>
