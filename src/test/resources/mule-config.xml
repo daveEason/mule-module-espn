@@ -25,6 +25,21 @@
         <logger level="WARN" message="Message payload = #[message.payload]"/>
     </flow>
 
+    <flow name="getAthletes_WithLimit">
+        <espn:get-athletes resource="#[message.payload['resource']]" limit="#[message.payload['limit']]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
+    </flow>
+
+    <flow name="getAthletes_WithOffset">
+        <espn:get-athletes resource="#[message.payload['resource']]" limit="#[message.payload['limit']]" offset="#[message.payload['offset']]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
+    </flow>
+
+    <flow name="getAthletes_AcceptTextXml">
+        <espn:get-athletes resource="#[message.payload['resource']]" limit="#[message.payload['limit']]" accept="#[message.payload['accept']]"/>
+        <logger level="WARN" message="Message payload = #[message.payload]"/>
+    </flow>
+
     <flow name="getAthletes_ByAthleteId">
         <espn:get-athletes resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]"/>
         <logger level="WARN" message="Message payload = #[message.payload]"/>

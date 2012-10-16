@@ -9,7 +9,16 @@ import org.mule.api.MuleEvent;
 import org.mule.construct.Flow;
 import org.mule.tck.AbstractMuleTestCase;
 import org.mule.tck.FunctionalTestCase;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.xml.sax.InputSource;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
+import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,6 +51,60 @@ public class espnConnectorTest extends FunctionalTestCase
         msg.put("group","1");
 
         runFlowWithPayloadAndExpectJSON("getAthletes_ByGroup", "success",  msg, "status");
+    }
+
+    @Test
+    public void testGetAthletes_WithLimit() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("limit","5");
+
+        runFlowWithPayloadAndExpectJSON("getAthletes_WithLimit", "success", msg, "status");
+    }
+
+    @Test
+    public void testGetAthletes_WithOffset() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("limit","5");
+        msg.put("offset","3");
+
+        runFlowWithPayloadAndExpectJSON("getAthletes_WithOffset", "success", msg, "status");
+    }
+
+    @Test
+    public void testGetAthletes_AcceptTextXml() throws Exception
+    {
+        Map msg = new HashMap();
+        msg.put("resource","sports/baseball/mlb");
+        msg.put("limit","5");
+        msg.put("accept","text/xml");
+
+        Flow flow = lookupFlowConstruct("getAthletes_AcceptTextXml");
+        MuleEvent event = AbstractMuleTestCase.getTestEvent(msg);
+        MuleEvent responseEvent = flow.process(event);
+
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+        try{
+            DocumentBuilder builder = dbf.newDocumentBuilder();
+            Document document = builder.parse(new InputSource(new StringReader((String) responseEvent.getMessage().getPayload())));
+
+            XPath xPath = XPathFactory.newInstance().newXPath();
+
+            Node node = (Node) xPath.evaluate("/response/status", document, XPathConstants.NODE);
+
+            assertEquals("success",node.getTextContent());
+
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
+
     }
 
     @Test

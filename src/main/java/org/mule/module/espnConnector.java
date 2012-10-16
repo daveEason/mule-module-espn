@@ -81,6 +81,9 @@ public abstract class espnConnector
      * @param enable ESPN optional flag to enable specific info (comma separated string) valid values: [stats|logos|notes|competitors]
      * @param seasonType ESPN season type accepts pre/reg/post for preseason, regular and postseason respectively
      * @param language ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
+     * @param limit Used to limit the number of results returned
+     * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
+     * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
      * @return String JSON string representing athlete data
      * @throws IOException Thrown in the event of a communications error
      *
@@ -93,7 +96,10 @@ public abstract class espnConnector
                                        @Optional @Default("") @RestQueryParam("groups") String group,
                                        @Optional @Default("") @RestQueryParam("enable") String enable,
                                        @Optional @Default("reg") @RestQueryParam("seasontype") String seasonType,
-                                       @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+                                       @Optional @Default("en") @RestQueryParam("lang") String language,
+                                       @Optional @Default("50") @RestQueryParam("limit") String limit,
+                                       @Optional @Default("0") @RestQueryParam("offset") String offset,
+                                       @Optional @Default("application/json") @RestQueryParam("_accept") String accept) throws IOException;
 
     /* ESPN Teams API -  http://developer.espn.com/docs/teams */
 
@@ -107,6 +113,9 @@ public abstract class espnConnector
      * @param enable ESPN optional flag to enable specific info (comma separated string) valid values: [venues|stats|roster|leaders]
      * @param groups ESPN group (integer) allows filtering by "group" or division
      * @param language ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
+     * @param limit Used to limit the number of results returned
+     * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
+     * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
      * @return String JSON string representing team data
      * @throws IOException Thrown in the event of a communications error
      *
@@ -117,7 +126,10 @@ public abstract class espnConnector
                                     @Optional @Default("") @RestUriParam("teamId") String teamId,
                                     @Optional @Default("") @RestQueryParam("enable") String enable,
                                     @Optional @Default("") @RestQueryParam("groups") String groups,
-                                    @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+                                    @Optional @Default("en") @RestQueryParam("lang") String language,
+                                    @Optional @Default("50") @RestQueryParam("limit") String limit,
+                                    @Optional @Default("0") @RestQueryParam("offset") String offset,
+                                    @Optional @Default("application/json") @RestQueryParam("_accept") String accept) throws IOException;
 
     /* ESPN Headlines API - http://developer.espn.com/docs/headlines */
 
@@ -130,6 +142,9 @@ public abstract class espnConnector
      * @param dates Integer in the form of "yyyymmdd" to get news for a particular date.
      * @param insider ESPN content to be included, valid values: yes, no, only
      * @param language ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
+     * @param limit Used to limit the number of results returned
+     * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
+     * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
      * @return String JSON stream of all news for current date.
      * @throws IOException Thrown in the event of a communications error Thrown in the event of a communications error
      *
@@ -139,7 +154,10 @@ public abstract class espnConnector
     public abstract String getNews(@RestUriParam("resource") String resource,
                                    @Optional @Default("") @RestQueryParam("dates") String dates,
                                    @Optional @Default("yes") @RestQueryParam("insider") String insider,
-                                   @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+                                   @Optional @Default("en") @RestQueryParam("lang") String language,
+                                   @Optional @Default("50") @RestQueryParam("limit") String limit,
+                                   @Optional @Default("0") @RestQueryParam("offset") String offset,
+                                   @Optional @Default("application/json") @RestQueryParam("_accept") String accept) throws IOException;
 
     /**
      * getNewsById
@@ -151,6 +169,7 @@ public abstract class espnConnector
      * @param dates Integer in the form of "yyyymmdd" to get news for a particular date.
      * @param insider ESPN content to be included, valid values: yes, no, only
      * @param language ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
+     * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
      * @return String JSON stream of all news for current date.
      * @throws IOException Thrown in the event of a communications error Thrown in the event of a communications error
      *
@@ -161,7 +180,8 @@ public abstract class espnConnector
                                    @Optional @Default("") @RestUriParam("newsId") String newsId,
                                    @Optional @Default("") @RestQueryParam("dates") String dates,
                                    @Optional @Default("yes") @RestQueryParam("insider") String insider,
-                                   @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+                                   @Optional @Default("en") @RestQueryParam("lang") String language,
+                                   @Optional @Default("application/json") @RestQueryParam("_accept") String accept) throws IOException;
 
 
     /**
@@ -172,6 +192,9 @@ public abstract class espnConnector
      * @param resource ESPN resource (i.e. /espnw)
      * @param insider ESPN content to be included, valid values: yes, no, only
      * @param language ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
+     * @param limit Used to limit the number of results returned
+     * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
+     * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
      * @return String JSON Top stories as chosen by ESPN editorial staff.
      * @throws IOException Thrown in the event of a communications error Thrown in the event of a communications error
      *
@@ -180,7 +203,10 @@ public abstract class espnConnector
     @RestCall(uri = BASE_URI + "/{resource}/news/headlines?apikey={apiKey}", method = HttpMethod.GET)
     public abstract String getNewsHeadlines(@RestUriParam("resource") String resource,
                                             @Optional @Default("yes") @RestQueryParam("insider") String insider,
-                                            @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+                                            @Optional @Default("en") @RestQueryParam("lang") String language,
+                                            @Optional @Default("50") @RestQueryParam("limit") String limit,
+                                            @Optional @Default("0") @RestQueryParam("offset") String offset,
+                                            @Optional @Default("application/json") @RestQueryParam("_accept") String accept) throws IOException;
 
 
     /**
@@ -192,6 +218,9 @@ public abstract class espnConnector
      * @param insider ESPN content to be included, valid values: yes, no, only
      * @param language ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @param region Can be used in conjunction with the lang query string parameter to return focused headlines for a particular region, where available.
+     * @param limit Used to limit the number of results returned
+     * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
+     * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
      * @return String JSON top stories as shown on ESPN.com home page. Only applicable to /sports resource.
      * @throws IOException Thrown in the event of a communications error
      *
@@ -201,7 +230,10 @@ public abstract class espnConnector
     public abstract String getNewsHeadlinesTop(@RestUriParam("resource") String resource,
                                                @Optional @Default("yes") @RestQueryParam("insider") String insider,
                                                @Optional @Default("en") @RestQueryParam("lang") String language,
-                                               @Optional @Default("us") @RestQueryParam("region") String region) throws IOException;
+                                               @Optional @Default("us") @RestQueryParam("region") String region,
+                                               @Optional @Default("50") @RestQueryParam("limit") String limit,
+                                               @Optional @Default("0") @RestQueryParam("offset") String offset,
+                                               @Optional @Default("application/json") @RestQueryParam("_accept") String accept) throws IOException;
 
 
     /**
@@ -214,6 +246,9 @@ public abstract class espnConnector
      * @param dates Integer in the form of "yyyymmdd" to get news for a particular date.
      * @param insider ESPN content to be included, valid values: yes, no, only
      * @param language ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
+     * @param limit Used to limit the number of results returned
+     * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
+     * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
      * @return String JSON stories about a particular player/athlete.
      * @throws IOException Thrown in the event of a communications error
      *
@@ -224,7 +259,10 @@ public abstract class espnConnector
                                            @RestUriParam("athleteId") String athleteId,
                                            @Optional @Default("") @RestQueryParam("dates") String dates,
                                            @Optional @Default("yes") @RestQueryParam("insider") String insider,
-                                           @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+                                           @Optional @Default("en") @RestQueryParam("lang") String language,
+                                           @Optional @Default("50") @RestQueryParam("limit") String limit,
+                                           @Optional @Default("0") @RestQueryParam("offset") String offset,
+                                           @Optional @Default("application/json") @RestQueryParam("_accept") String accept) throws IOException;
 
 
     /**
@@ -237,6 +275,9 @@ public abstract class espnConnector
      * @param dates Integer in the form of "yyyymmdd" to get news for a particular date.
      * @param insider ESPN content to be included, valid values: yes, no, only
      * @param language ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
+     * @param limit Used to limit the number of results returned
+     * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
+     * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
      * @return String JSON stories about a particular player/athlete.
      * @throws IOException Thrown in the event of a communications error
      *
@@ -247,7 +288,10 @@ public abstract class espnConnector
                                         @RestUriParam("teamId") String teamId,
                                         @Optional @Default("") @RestQueryParam("dates") String dates,
                                         @Optional @Default("yes") @RestQueryParam("insider") String insider,
-                                        @Optional @Default("en") @RestQueryParam("lang") String language) throws IOException;
+                                        @Optional @Default("en") @RestQueryParam("lang") String language,
+                                        @Optional @Default("50") @RestQueryParam("limit") String limit,
+                                        @Optional @Default("0") @RestQueryParam("offset") String offset,
+                                        @Optional @Default("application/json") @RestQueryParam("_accept") String accept) throws IOException;
 
 
     /**
