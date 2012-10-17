@@ -1,33 +1,33 @@
 <!-- BEGIN_INCLUDE(espn:get-athletes) -->
-<espn:get-athletes resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]" dates="#[message.payload['dates']]" language="#[message.payload['lang']]"/>
+<espn:get-athletes resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]" dates="#[message.payload['dates']]" language="#[message.payload['lang']]" limit="50" offset="0" accept="application/json"/>
 <!-- END_INCLUDE(espn:get-athletes) -->
 <!-- BEGIN_INCLUDE(espn:get-teams) -->
-    <espn:get-teams resource="#[message.payload['resource']]" teamId="#[message.payload['teamId']]" language="#[message.payload['lang']]" enable="venues"/>
+    <espn:get-teams resource="#[message.payload['resource']]" teamId="#[message.payload['teamId']]" language="#[message.payload['lang']]" enable="venues" limit="50" offset="0" accept="application/json"/>
 <!-- END_INCLUDE(espn:get-teams) -->
 <!-- BEGIN_INCLUDE(espn:get-news) -->
-        <espn:get-news resource="#[message.payload['resource']]" dates="#[message.payload['dates']]" insider="#[message.payload['insider']]" language="#[message.payload['lang']]"/>
+        <espn:get-news resource="#[message.payload['resource']]" dates="#[message.payload['dates']]" insider="#[message.payload['insider']]" language="#[message.payload['lang']]" limit="50" offset="0" accept="application/json"/>
 <!-- END_INCLUDE(espn:get-news) -->
 <!-- BEGIN_INCLUDE(espn:get-news-by-id) -->
         <espn:get-news-by-id resource="#[message.payload['resource']]" newsId="#[message.payload['newsId']]"/>
 <!-- END_INCLUDE(espn:get-news-by-id) -->
 <!-- BEGIN_INCLUDE(espn:get-news-headlines) -->
-        <espn:get-news-headlines resource="#[message.payload['resource']]"/>
+        <espn:get-news-headlines resource="#[message.payload['resource']]" limit="50" offset="0" accept="application/json"/>
 <!-- END_INCLUDE(espn:get-news-headlines) -->
 <!-- BEGIN_INCLUDE(espn:get-news-headlines-top) -->
-        <espn:get-news-headlines-top resource="#[message.payload['resource']]" language="#[message.payload['lang']]" region="#[message.payload['region']]"/>
+        <espn:get-news-headlines-top resource="#[message.payload['resource']]" language="#[message.payload['lang']]" region="#[message.payload['region']]" limit="50" offset="0" accept="application/json"/>
 <!-- END_INCLUDE(espn:get-news-headlines-top) -->
 <!-- BEGIN_INCLUDE(espn:get-athletes-news) -->
-        <espn:get-athletes-news resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]"/>
+        <espn:get-athletes-news resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]" limit="50" offset="0" accept="application/json"/>
 <!-- END_INCLUDE(espn:get-athletes-news) -->
 <!-- BEGIN_INCLUDE(espn:get-teams-news) -->
-        <espn:get-teams-news resource="#[message.payload['resource']]" teamId="#[message.payload['teamId']]"/>
+        <espn:get-teams-news resource="#[message.payload['resource']]" teamId="#[message.payload['teamId']]" limit="50" offset="0" accept="application/json"/>
 <!-- END_INCLUDE(espn:get-teams-news) -->
 <!-- BEGIN_INCLUDE(espn:get-sports) -->
-        <espn:get-sports/>
+        <espn:get-sports limit="50" offset="0" accept="application/json"/>
 <!-- END_INCLUDE(espn:get-sports) -->
 <!-- BEGIN_INCLUDE(espn:get-sports-organizing-bodies) -->
-        <espn:get-sports-organizing-bodies sport="#[message.payload['sport']]"/>
+        <espn:get-sports-organizing-bodies sport="#[message.payload['sport']]" limit="50" offset="0" accept="application/json"/>
 <!-- END_INCLUDE(espn:get-sports-organizing-bodies) -->
 <!-- BEGIN_INCLUDE(espn:get-sports-organizing-groups-divisions) -->
-        <espn:get-sports-organizing-groups-divisions sport="#[message.payload['sport']]" league="#[message.payload['league']]"/>
+        <espn:get-sports-organizing-groups-divisions sport="#[message.payload['sport']]" league="#[message.payload['league']]" limit="50" offset="0" accept="application/json"/>
 <!-- END_INCLUDE(espn:get-sports-organizing-groups-divisions) -->

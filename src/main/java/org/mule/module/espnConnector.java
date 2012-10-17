@@ -84,7 +84,7 @@ public abstract class espnConnector
      * @param limit Used to limit the number of results returned
      * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
      * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
-     * @return String JSON string representing athlete data
+     * @return String representing athlete data (can be JSON or XML depending on 'accept' parameter)
      * @throws IOException Thrown in the event of a communications error
      *
      */
@@ -116,7 +116,7 @@ public abstract class espnConnector
      * @param limit Used to limit the number of results returned
      * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
      * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
-     * @return String JSON string representing team data
+     * @return String representing team data (can be JSON or XML depending on 'accept' parameter)
      * @throws IOException Thrown in the event of a communications error
      *
      */
@@ -145,7 +145,7 @@ public abstract class espnConnector
      * @param limit Used to limit the number of results returned
      * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
      * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
-     * @return String JSON stream of all news for current date.
+     * @return String Representing a stream of all news for current date (can be JSON or XML depending on 'accept' parameter).
      * @throws IOException Thrown in the event of a communications error Thrown in the event of a communications error
      *
      */
@@ -170,7 +170,7 @@ public abstract class espnConnector
      * @param insider ESPN content to be included, valid values: yes, no, only
      * @param language ESPN lang - valid values include 'en' (English) and 'es' (Spanish)
      * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
-     * @return String JSON stream of all news for current date.
+     * @return String represents news story identified by input parameter newsId (can be JSON or XML depending on 'accept' parameter).
      * @throws IOException Thrown in the event of a communications error Thrown in the event of a communications error
      *
      */
@@ -195,7 +195,7 @@ public abstract class espnConnector
      * @param limit Used to limit the number of results returned
      * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
      * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
-     * @return String JSON Top stories as chosen by ESPN editorial staff.
+     * @return String ESPN news headlines (can be JSON or XML depending on 'accept' parameter).
      * @throws IOException Thrown in the event of a communications error Thrown in the event of a communications error
      *
      */
@@ -221,7 +221,7 @@ public abstract class espnConnector
      * @param limit Used to limit the number of results returned
      * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
      * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
-     * @return String JSON top stories as shown on ESPN.com home page. Only applicable to /sports resource.
+     * @return String Top stories as shown on ESPN.com home page. Only applicable to /sports resource (can be JSON or XML depending on 'accept' parameter).
      * @throws IOException Thrown in the event of a communications error
      *
      */
@@ -249,7 +249,7 @@ public abstract class espnConnector
      * @param limit Used to limit the number of results returned
      * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
      * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
-     * @return String JSON stories about a particular player/athlete.
+     * @return String Stories about a particular player/athlete (can be JSON or XML depending on 'accept' parameter).
      * @throws IOException Thrown in the event of a communications error
      *
      */
@@ -278,7 +278,7 @@ public abstract class espnConnector
      * @param limit Used to limit the number of results returned
      * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
      * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
-     * @return String JSON stories about a particular player/athlete.
+     * @return String Stories about a particular team (can be JSON or XML depending on 'accept' parameter).
      * @throws IOException Thrown in the event of a communications error
      *
      */
@@ -303,13 +303,18 @@ public abstract class espnConnector
      *
      * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-sports}
      *
-     * @return String JSON stories about a particular player/athlete.
+     * @param limit Used to limit the number of results returned
+     * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
+     * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
+     * @return String List of all sports currently supported in the ESPN API (can be JSON or XML depending on 'accept' parameter).
      * @throws IOException Thrown in the event of a communications error
      *
      */
     @Processor
     @RestCall(uri = BASE_URI + "/sports?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getSports() throws IOException;
+    public abstract String getSports(@Optional @Default("50") @RestQueryParam("limit") String limit,
+                                     @Optional @Default("0") @RestQueryParam("offset") String offset,
+                                     @Optional @Default("application/json") @RestQueryParam("_accept") String accept) throws IOException;
 
     /**
      * getSportsOrganizingBodies
@@ -317,13 +322,19 @@ public abstract class espnConnector
      * {@sample.xml ../../../doc/espn-connector.xml.sample espn:get-sports-organizing-bodies}
      *
      * @param sport ESPN sport name
-     * @return String JSON stories about a particular player/athlete.
+     * @param limit Used to limit the number of results returned
+     * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
+     * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
+     * @return String returns a reference to all organizing bodies, or leagues (e.g. MLB) that are supported within a sport (e.g. baseball) (can be JSON or XML depending on 'accept' parameter).
      * @throws IOException Thrown in the event of a communications error
      *
      */
     @Processor
     @RestCall(uri = BASE_URI + "/sports/{sport}?apikey={apiKey}", method = HttpMethod.GET)
-    public abstract String getSportsOrganizingBodies(@RestUriParam("sport") String sport) throws IOException;
+    public abstract String getSportsOrganizingBodies(@RestUriParam("sport") String sport,
+                                                     @Optional @Default("50") @RestQueryParam("limit") String limit,
+                                                     @Optional @Default("0") @RestQueryParam("offset") String offset,
+                                                     @Optional @Default("application/json") @RestQueryParam("_accept") String accept) throws IOException;
 
     /**
      * getSportsOrganizingGroupsDivisions
@@ -332,13 +343,19 @@ public abstract class espnConnector
      *
      * @param sport ESPN sport name
      * @param league ESPN league abbreviation (organizing body)
-     * @return String JSON stories about a particular player/athlete.
+     * @param limit Used to limit the number of results returned
+     * @param offset Used for pagination (i.e. 11 will start with the 11th entry in the response)
+     * @param accept Used when you can not set the Accepted header (i.e. application/json, text/xml)
+     * @return String returns information for all groups/divisions that make up an organizing body (i.e. MLB) (can be JSON or XML depending on 'accept' parameter).
      * @throws IOException Thrown in the event of a communications error
      *
      */
     @Processor
     @RestCall(uri = BASE_URI + "/sports/{sport}/{league}?apikey={apiKey}", method = HttpMethod.GET)
     public abstract String getSportsOrganizingGroupsDivisions(@RestUriParam("sport") String sport,
-                                                              @RestUriParam("league") String league) throws IOException;
+                                                              @RestUriParam("league") String league,
+                                                              @Optional @Default("50") @RestQueryParam("limit") String limit,
+                                                              @Optional @Default("0") @RestQueryParam("offset") String offset,
+                                                              @Optional @Default("application/json") @RestQueryParam("_accept") String accept) throws IOException;
 
 }

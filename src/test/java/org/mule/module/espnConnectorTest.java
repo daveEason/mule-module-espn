@@ -82,29 +82,7 @@ public class espnConnectorTest extends FunctionalTestCase
         msg.put("limit","5");
         msg.put("accept","text/xml");
 
-        Flow flow = lookupFlowConstruct("getAthletes_AcceptTextXml");
-        MuleEvent event = AbstractMuleTestCase.getTestEvent(msg);
-        MuleEvent responseEvent = flow.process(event);
-
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-        try{
-            DocumentBuilder builder = dbf.newDocumentBuilder();
-            Document document = builder.parse(new InputSource(new StringReader((String) responseEvent.getMessage().getPayload())));
-
-            XPath xPath = XPathFactory.newInstance().newXPath();
-
-            Node node = (Node) xPath.evaluate("/response/status", document, XPathConstants.NODE);
-
-            assertEquals("success",node.getTextContent());
-
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-
-
-
+        runFlowWithPayloadAndExpectXML("getAthletes_AcceptTextXml", "success", msg, "/response/status");
     }
 
     @Test
@@ -398,6 +376,7 @@ public class espnConnectorTest extends FunctionalTestCase
      * @param flowName The name of the flow to run
      * @param expect The expected output
      * @param payload The payload of the input event
+     * @param keyName The name of the JSON key that contains the required assertion parameter.
      */
     protected <T, U> void runFlowWithPayloadAndExpectJSON(String flowName,  T expect, U payload, T keyName) throws Exception
     {
@@ -412,6 +391,39 @@ public class espnConnectorTest extends FunctionalTestCase
 
     }
 
+    /**
+     * Run the flow specified by name using the specified payload and assert
+     * equality on the expected output
+     *
+     * @param flowName The name of the flow to run
+     * @param expect The expected output
+     * @param payload The payload of the input event
+     * @param xpathString The xPath string that indicates the location of the parameter required for the assertion against the 'expected' value (i.e. /response/status).
+     */
+    protected <T, U> void runFlowWithPayloadAndExpectXML(String flowName,  T expect, U payload, T xpathString) throws Exception
+    {
+        Flow flow = lookupFlowConstruct(flowName);
+        MuleEvent event = AbstractMuleTestCase.getTestEvent(payload);
+        MuleEvent responseEvent = flow.process(event);
+
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+        try{
+            DocumentBuilder builder = dbf.newDocumentBuilder();
+            Document document = builder.parse(new InputSource(new StringReader((String) responseEvent.getMessage().getPayload())));
+
+            XPath xPath = XPathFactory.newInstance().newXPath();
+
+            Node node = (Node) xPath.evaluate((String) xpathString, document, XPathConstants.NODE);
+
+            assertEquals(expect,node.getTextContent());
+
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+    }
 
     /**
      * Retrieve a flow by name from the registry
