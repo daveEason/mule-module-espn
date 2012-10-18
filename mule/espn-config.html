@@ -530,7 +530,7 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>getAthletes
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-athletes resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]" dates="#[message.payload['dates']]" language="#[message.payload['lang']]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-athletes resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]" dates="#[message.payload['dates']]" language="#[message.payload['lang']]" limit="50" offset="0" accept="application/json"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -630,6 +630,42 @@ specify which configuration to use.</p>
                 
                 
           
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>limit</nobr></td>
+                        <td class="jd-descrcol">50</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used to limit the number of results returned</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>offset</nobr></td>
+                        <td class="jd-descrcol">0</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used for pagination (i.e. 11 will start with the 11th entry in the response)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accept</nobr></td>
+                        <td class="jd-descrcol">application/json</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used when you can not set the Accepted header (i.e. application/json, text/xml)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
           
           
         </table>
@@ -645,7 +681,7 @@ specify which configuration to use.</p>
              </tr>
              <tr>
                 <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
-                <td class="jd-descrcol">String JSON string representing athlete data</td>
+                <td class="jd-descrcol">String representing athlete data (can be JSON or XML depending on 'accept' parameter)</td>
              </tr>
          </table>
   </div>
@@ -684,7 +720,7 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>getAthletesNews
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-athletes-news resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-athletes-news resource="#[message.payload['resource']]" athleteId="#[message.payload['athleteId']]" limit="50" offset="0" accept="application/json"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -760,6 +796,42 @@ specify which configuration to use.</p>
                 
                 
           
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>limit</nobr></td>
+                        <td class="jd-descrcol">50</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used to limit the number of results returned</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>offset</nobr></td>
+                        <td class="jd-descrcol">0</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used for pagination (i.e. 11 will start with the 11th entry in the response)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accept</nobr></td>
+                        <td class="jd-descrcol">application/json</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used when you can not set the Accepted header (i.e. application/json, text/xml)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
           
           
         </table>
@@ -775,7 +847,7 @@ specify which configuration to use.</p>
              </tr>
              <tr>
                 <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
-                <td class="jd-descrcol">String JSON stories about a particular player/athlete.</td>
+                <td class="jd-descrcol">String Stories about a particular player/athlete (can be JSON or XML depending on 'accept' parameter).</td>
              </tr>
          </table>
   </div>
@@ -814,7 +886,7 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>getNews
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-news resource="#[message.payload['resource']]" dates="#[message.payload['dates']]" insider="#[message.payload['insider']]" language="#[message.payload['lang']]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-news resource="#[message.payload['resource']]" dates="#[message.payload['dates']]" insider="#[message.payload['insider']]" language="#[message.payload['lang']]" limit="50" offset="0" accept="application/json"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -878,6 +950,42 @@ specify which configuration to use.</p>
                 
                 
           
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>limit</nobr></td>
+                        <td class="jd-descrcol">50</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used to limit the number of results returned</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>offset</nobr></td>
+                        <td class="jd-descrcol">0</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used for pagination (i.e. 11 will start with the 11th entry in the response)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accept</nobr></td>
+                        <td class="jd-descrcol">application/json</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used when you can not set the Accepted header (i.e. application/json, text/xml)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
           
           
         </table>
@@ -893,7 +1001,7 @@ specify which configuration to use.</p>
              </tr>
              <tr>
                 <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
-                <td class="jd-descrcol">String JSON stream of all news for current date.</td>
+                <td class="jd-descrcol">String Representing a stream of all news for current date (can be JSON or XML depending on 'accept' parameter).</td>
              </tr>
          </table>
   </div>
@@ -1008,6 +1116,18 @@ specify which configuration to use.</p>
                 
                 
           
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accept</nobr></td>
+                        <td class="jd-descrcol">application/json</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used when you can not set the Accepted header (i.e. application/json, text/xml)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
           
           
         </table>
@@ -1023,7 +1143,7 @@ specify which configuration to use.</p>
              </tr>
              <tr>
                 <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
-                <td class="jd-descrcol">String JSON stream of all news for current date.</td>
+                <td class="jd-descrcol">String represents news story identified by input parameter newsId (can be JSON or XML depending on 'accept' parameter).</td>
              </tr>
          </table>
   </div>
@@ -1062,7 +1182,7 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>getNewsHeadlines
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-news-headlines resource="#[message.payload['resource']]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-news-headlines resource="#[message.payload['resource']]" limit="50" offset="0" accept="application/json"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1114,6 +1234,42 @@ specify which configuration to use.</p>
                 
                 
           
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>limit</nobr></td>
+                        <td class="jd-descrcol">50</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used to limit the number of results returned</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>offset</nobr></td>
+                        <td class="jd-descrcol">0</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used for pagination (i.e. 11 will start with the 11th entry in the response)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accept</nobr></td>
+                        <td class="jd-descrcol">application/json</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used when you can not set the Accepted header (i.e. application/json, text/xml)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
           
           
         </table>
@@ -1129,7 +1285,7 @@ specify which configuration to use.</p>
              </tr>
              <tr>
                 <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
-                <td class="jd-descrcol">String JSON Top stories as chosen by ESPN editorial staff.</td>
+                <td class="jd-descrcol">String ESPN news headlines (can be JSON or XML depending on 'accept' parameter).</td>
              </tr>
          </table>
   </div>
@@ -1168,7 +1324,7 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>getNewsHeadlinesTop
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-news-headlines-top resource="#[message.payload['resource']]" language="#[message.payload['lang']]" region="#[message.payload['region']]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-news-headlines-top resource="#[message.payload['resource']]" language="#[message.payload['lang']]" region="#[message.payload['region']]" limit="50" offset="0" accept="application/json"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1232,6 +1388,42 @@ specify which configuration to use.</p>
                 
                 
           
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>limit</nobr></td>
+                        <td class="jd-descrcol">50</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used to limit the number of results returned</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>offset</nobr></td>
+                        <td class="jd-descrcol">0</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used for pagination (i.e. 11 will start with the 11th entry in the response)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accept</nobr></td>
+                        <td class="jd-descrcol">application/json</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used when you can not set the Accepted header (i.e. application/json, text/xml)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
           
           
         </table>
@@ -1247,7 +1439,7 @@ specify which configuration to use.</p>
              </tr>
              <tr>
                 <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
-                <td class="jd-descrcol">String JSON top stories as shown on ESPN.com home page. Only applicable to /sports resource.</td>
+                <td class="jd-descrcol">String Top stories as shown on ESPN.com home page. Only applicable to /sports resource (can be JSON or XML depending on 'accept' parameter).</td>
              </tr>
          </table>
   </div>
@@ -1286,7 +1478,7 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>getAllSports
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-sports/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-sports limit="50" offset="0" accept="application/json"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1301,6 +1493,42 @@ specify which configuration to use.</p>
           <td class="jd-descrcol"></td>
         </tr>
           
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>limit</nobr></td>
+                        <td class="jd-descrcol">50</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used to limit the number of results returned</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>offset</nobr></td>
+                        <td class="jd-descrcol">0</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used for pagination (i.e. 11 will start with the 11th entry in the response)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accept</nobr></td>
+                        <td class="jd-descrcol">application/json</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used when you can not set the Accepted header (i.e. application/json, text/xml)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
           
           
           
@@ -1317,7 +1545,7 @@ specify which configuration to use.</p>
              </tr>
              <tr>
                 <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
-                <td class="jd-descrcol">String JSON stories about a particular player/athlete.</td>
+                <td class="jd-descrcol">String List of all sports currently supported in the ESPN API (can be JSON or XML depending on 'accept' parameter).</td>
              </tr>
          </table>
   </div>
@@ -1356,7 +1584,7 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>getSportsOrganizingBodies
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-sports-organizing-bodies sport="#[message.payload['sport']]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-sports-organizing-bodies sport="#[message.payload['sport']]" limit="50" offset="0" accept="application/json"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1384,6 +1612,42 @@ specify which configuration to use.</p>
                 
                 
           
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>limit</nobr></td>
+                        <td class="jd-descrcol">50</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used to limit the number of results returned</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>offset</nobr></td>
+                        <td class="jd-descrcol">0</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used for pagination (i.e. 11 will start with the 11th entry in the response)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accept</nobr></td>
+                        <td class="jd-descrcol">application/json</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used when you can not set the Accepted header (i.e. application/json, text/xml)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
           
           
         </table>
@@ -1399,7 +1663,7 @@ specify which configuration to use.</p>
              </tr>
              <tr>
                 <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
-                <td class="jd-descrcol">String JSON stories about a particular player/athlete.</td>
+                <td class="jd-descrcol">String returns a reference to all organizing bodies, or leagues (e.g. MLB) that are supported within a sport (e.g. baseball) (can be JSON or XML depending on 'accept' parameter).</td>
              </tr>
          </table>
   </div>
@@ -1438,7 +1702,7 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>getSportsOrganizingGroupsDivisions
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-sports-organizing-groups-divisions sport="#[message.payload['sport']]" league="#[message.payload['league']]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-sports-organizing-groups-divisions sport="#[message.payload['sport']]" league="#[message.payload['league']]" limit="50" offset="0" accept="application/json"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1478,6 +1742,42 @@ specify which configuration to use.</p>
                 
                 
           
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>limit</nobr></td>
+                        <td class="jd-descrcol">50</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used to limit the number of results returned</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>offset</nobr></td>
+                        <td class="jd-descrcol">0</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used for pagination (i.e. 11 will start with the 11th entry in the response)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accept</nobr></td>
+                        <td class="jd-descrcol">application/json</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used when you can not set the Accepted header (i.e. application/json, text/xml)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
           
           
         </table>
@@ -1493,7 +1793,7 @@ specify which configuration to use.</p>
              </tr>
              <tr>
                 <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
-                <td class="jd-descrcol">String JSON stories about a particular player/athlete.</td>
+                <td class="jd-descrcol">String returns information for all groups/divisions that make up an organizing body (i.e. MLB) (can be JSON or XML depending on 'accept' parameter).</td>
              </tr>
          </table>
   </div>
@@ -1532,7 +1832,7 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>getTeams
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-teams resource="#[message.payload['resource']]" teamId="#[message.payload['teamId']]" language="#[message.payload['lang']]" enable="venues"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-teams resource="#[message.payload['resource']]" teamId="#[message.payload['teamId']]" language="#[message.payload['lang']]" enable="venues" limit="50" offset="0" accept="application/json"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1608,6 +1908,42 @@ specify which configuration to use.</p>
                 
                 
           
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>limit</nobr></td>
+                        <td class="jd-descrcol">50</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used to limit the number of results returned</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>offset</nobr></td>
+                        <td class="jd-descrcol">0</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used for pagination (i.e. 11 will start with the 11th entry in the response)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accept</nobr></td>
+                        <td class="jd-descrcol">application/json</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used when you can not set the Accepted header (i.e. application/json, text/xml)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
           
           
         </table>
@@ -1623,7 +1959,7 @@ specify which configuration to use.</p>
              </tr>
              <tr>
                 <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
-                <td class="jd-descrcol">String JSON string representing team data</td>
+                <td class="jd-descrcol">String representing team data (can be JSON or XML depending on 'accept' parameter)</td>
              </tr>
          </table>
   </div>
@@ -1662,7 +1998,7 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>getTeamsNews
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-teams-news resource="#[message.payload['resource']]" teamId="#[message.payload['teamId']]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;espn:get-teams-news resource="#[message.payload['resource']]" teamId="#[message.payload['teamId']]" limit="50" offset="0" accept="application/json"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1738,6 +2074,42 @@ specify which configuration to use.</p>
                 
                 
           
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>limit</nobr></td>
+                        <td class="jd-descrcol">50</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used to limit the number of results returned</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>offset</nobr></td>
+                        <td class="jd-descrcol">0</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used for pagination (i.e. 11 will start with the 11th entry in the response)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accept</nobr></td>
+                        <td class="jd-descrcol">application/json</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Used when you can not set the Accepted header (i.e. application/json, text/xml)</td>
+                        <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
           
           
         </table>
@@ -1753,7 +2125,7 @@ specify which configuration to use.</p>
              </tr>
              <tr>
                 <td class="jd-descrcol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
-                <td class="jd-descrcol">String JSON stories about a particular player/athlete.</td>
+                <td class="jd-descrcol">String Stories about a particular team (can be JSON or XML depending on 'accept' parameter).</td>
              </tr>
          </table>
   </div>
