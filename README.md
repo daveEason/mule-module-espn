@@ -15,6 +15,22 @@ TESTING
 This  project also contains test classes that can be run as part of a test
 suite.
 
+MANUALLY ADD CONNECTOR EXTENSION TO MULE STUDIO
+===============================================
+
+- Clone repository locally (git clone ...)
+
+- Building Connector
+See information on 'Building Your Connector' located here - http://www.mulesoft.org/documentation/display/DEVKIT/Your+First+Cloud+Connector
+
+- Mule Studio Import connector extension:
+-- Mule Studio > Help > "Install New Software"
+-- In the 'Available Software' window click 'Add'
+-- Name = "Mule ESPN API Connector Extension",
+-- Click 'Archive' and select the <ESPN Connector home>/target/UpdateSite.zip file.
+	
+When you have completed these steps the ESPN connector extension will be visible under the 'Cloud Connectors' tab on the right hand side of your Mule Studio palette.
+
 ADDITIONAL RESOURCES
 ====================
 Everything you need to know about getting started with Mule can be found here:
