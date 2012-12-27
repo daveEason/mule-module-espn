@@ -20,9 +20,9 @@ Manually add connector extension to Mule Studio
 
 1. Clone repository locally (git clone ...)
 
-2. Building Connector:
+2. Building Connector (see 'Building Your Connector' link provided):
 
-	* See information on 'Building Your Connector' located here - http://www.mulesoft.org/documentation/display/DEVKIT/Your+First+Cloud+Connector
+	http://www.mulesoft.org/documentation/display/DEVKIT/Your+First+Cloud+Connector
 
 3. Mule Studio Import connector extension:
 	* Mule Studio > Help > "Install New Software"
