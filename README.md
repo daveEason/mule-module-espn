@@ -29,7 +29,7 @@ Manually add connector extension to Mule Studio
 	* In the 'Available Software' window click 'Add'
 	* Name = "Mule ESPN API Connector Extension",
 	* Click 'Archive' and select the <ESPN Connector home>/target/UpdateSite.zip file.
-
+  
 4. When you have completed these steps the ESPN connector extension will be visible under the 'Cloud Connectors' tab on the right hand side of your Mule Studio palette.
 
 ADDITIONAL RESOURCES
