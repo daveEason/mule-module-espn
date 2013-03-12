@@ -69,7 +69,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <meta name="description" content="Documentation for Mule Cloud Connector." />
+  <meta name="description" content="Documentation for ESPN Connector." />
 
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
 <title>
@@ -77,7 +77,7 @@
   AbstractExpressionEvaluator
 
 
-| Mule Cloud Connector
+| ESPN Connector
 
 </title>
 <link href="../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
@@ -120,7 +120,7 @@
   feedback_widget_options.color = "#2F74AE";
   feedback_widget_options.style = "question";
 
-  feedback_widget_options.tag = "Mule Cloud Connector";
+  feedback_widget_options.tag = "ESPN Connector";
 
   feedback_widget_options.limit = "3";
 
@@ -133,7 +133,7 @@
 <div id="header">
     <div id="headerLeft">
     
-      <span id="masthead-title">Mule Cloud Connector</span>
+      <span id="masthead-title">ESPN Connector</span>
     
     <ul id="header-tabs" class="">
     
@@ -640,7 +640,7 @@ Summary:
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/processors/AbstractExpressionEvaluator.html#evaluateAndTransform(org.mule.api.MuleContext, org.mule.api.MuleEvent, java.lang.reflect.Type, java.lang.String, java.lang.Object)">evaluateAndTransform</a></span>(MuleContext muleContext, MuleEvent event, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/reflect/Type.html">Type</a> expectedType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> expectedMimeType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> source)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/processors/AbstractExpressionEvaluator.html#evaluateAndTransform(org.mule.api.MuleContext, org.mule.api.MuleMessage, java.lang.reflect.Type, java.lang.String, java.lang.Object)">evaluateAndTransform</a></span>(MuleContext muleContext, MuleMessage muleMessage, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/reflect/Type.html">Type</a> expectedType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> expectedMimeType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> source)</nobr>
         
   </td></tr>
 
@@ -653,10 +653,10 @@ Summary:
             
             
             
-            boolean</nobr>
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/processors/AbstractExpressionEvaluator.html#isAssignableFrom(java.lang.reflect.Type, java.lang.Class)">isAssignableFrom</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/reflect/Type.html">Type</a> expectedType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Class.html">Class</a> clazz)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/processors/AbstractExpressionEvaluator.html#evaluateAndTransform(org.mule.api.MuleContext, org.mule.api.MuleEvent, java.lang.reflect.Type, java.lang.String, java.lang.Object)">evaluateAndTransform</a></span>(MuleContext muleContext, MuleEvent event, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/reflect/Type.html">Type</a> expectedType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> expectedMimeType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> source)</nobr>
         
   </td></tr>
 
@@ -672,13 +672,29 @@ Summary:
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/processors/AbstractExpressionEvaluator.html#isList(java.lang.reflect.Type)">isList</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/reflect/Type.html">Type</a> type)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/processors/AbstractExpressionEvaluator.html#isAssignableFrom(java.lang.reflect.Type, java.lang.Class)">isAssignableFrom</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/reflect/Type.html">Type</a> expectedType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Class.html">Class</a> clazz)</nobr>
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/processors/AbstractExpressionEvaluator.html#isList(java.lang.reflect.Type)">isList</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/reflect/Type.html">Type</a> type)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -696,7 +712,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -712,7 +728,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -726,6 +742,22 @@ Summary:
         
         <div class="jd-descrdiv">Checks whether the specified class parameter is an instance of <code><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a></code></div>
   
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/processors/AbstractExpressionEvaluator.html#transform(org.mule.api.MuleContext, org.mule.api.MuleMessage, java.lang.reflect.Type, java.lang.String, java.lang.Object)">transform</a></span>(MuleContext muleContext, MuleMessage message, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/reflect/Type.html">Type</a> expectedType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> expectedMimeType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> source)</nobr>
+        
   </td></tr>
 
 
@@ -1156,6 +1188,75 @@ From class
 </div>
 
 
+<A NAME="evaluateAndTransform(org.mule.api.MuleContext, org.mule.api.MuleMessage, java.lang.reflect.Type, java.lang.String, java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>
+      </span>
+      <span class="sympad">evaluateAndTransform</span>
+      <span class="normal">(MuleContext muleContext, MuleMessage muleMessage, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/reflect/Type.html">Type</a> expectedType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> expectedMimeType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> source)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>muleContext</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>muleMessage</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>expectedType</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>expectedMimeType</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>source</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>TransformerException</td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th>TransformerMessagingException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="evaluateAndTransform(org.mule.api.MuleContext, org.mule.api.MuleEvent, java.lang.reflect.Type, java.lang.String, java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1421,6 +1522,75 @@ From class
         <tr>
           <th>clazz</td>
           <td><code>Class</code> to check.</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="transform(org.mule.api.MuleContext, org.mule.api.MuleMessage, java.lang.reflect.Type, java.lang.String, java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>
+      </span>
+      <span class="sympad">transform</span>
+      <span class="normal">(MuleContext muleContext, MuleMessage message, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/reflect/Type.html">Type</a> expectedType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> expectedMimeType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> source)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>muleContext</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>message</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>expectedType</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>expectedMimeType</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>source</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>TransformerException</td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th>TransformerMessagingException</td>
+            <td></td>
         </tr>
       </table>
   </div>
