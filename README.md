@@ -1,4 +1,8 @@
 
+NOTE: THIS PROJECT HAS BEEN MOVED TO https://github.com/mulesoft/espn-connector.git
+
+-----------------------------------------------------
+
 WELCOME
 =======
 Welcome to the Mule ESPN API Connector
